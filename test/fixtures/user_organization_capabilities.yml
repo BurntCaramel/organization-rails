@@ -1,0 +1,11 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  organization: one
+  user_identifier: MyString
+  capabilities: MyString
+
+two:
+  organization: two
+  user_identifier: MyString
+  capabilities: MyString
