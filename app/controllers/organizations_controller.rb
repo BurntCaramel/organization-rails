@@ -6,7 +6,8 @@ class OrganizationsController < ApplicationController
   # GET /organizations.json
   def index
     # @organizations = HTTParty.get("/1/@")['items']
-    @organizations = Organization.where(owner_identifier: @current_user['id'])
+    # @organizations = Organization.where(owner_identifier: @current_user['id'])
+    @organizations = Organization.all
   end
 
   # GET /organizations/1
@@ -17,7 +18,7 @@ class OrganizationsController < ApplicationController
 
   # GET /organizations/new
   def new
-    @organization = Organization.new
+    @organization = Organization.new(owner_identifier: @current_user['id'])
   end
 
   # GET /organizations/1/edit
@@ -70,14 +71,16 @@ class OrganizationsController < ApplicationController
       @organization = Organization.find(params[:id])
     end
 
-    def set_current_user
-      @current_user = session[:userinfo]
-
-      redirect_to '/' if @current_user.nil?
-    end
-
     # Never trust parameters from the scary internet, only allow the white list through.
     def organization_params
       params.require(:organization).permit(:name)
+    end
+
+    def set_current_user
+      @current_user = session[:userinfo]
+
+      #if Rails.env.production?
+        redirect_to '/' if @current_user.nil?
+      #end
     end
 end

@@ -7,6 +7,6 @@ class DashboardController < ApplicationController
 
   private
     def set_current_user
-      @current_user = session[:userinfo]
+      @current_user = session[:current_user]
     end
 end
