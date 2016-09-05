@@ -1,0 +1,5 @@
+<% if @current_user.nil? %>
+<%= render 'log-in-passwordless' %>
+<% else %>
+<%= @current_user.inspect %>
+<% end %>

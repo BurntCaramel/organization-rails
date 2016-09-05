@@ -1,15 +1,18 @@
 class OrganizationsController < ApplicationController
+  before_action :set_current_user, only: [:index, :show, :edit, :update, :destroy]
   before_action :set_organization, only: [:show, :edit, :update, :destroy]
 
   # GET /organizations
   # GET /organizations.json
   def index
-    @organizations = Organization.all
+    # @organizations = HTTParty.get("/1/@")['items']
+    @organizations = Organization.where(owner_identifier: @current_user['id'])
   end
 
   # GET /organizations/1
   # GET /organizations/1.json
   def show
+    
   end
 
   # GET /organizations/new
@@ -67,8 +70,14 @@ class OrganizationsController < ApplicationController
       @organization = Organization.find(params[:id])
     end
 
+    def set_current_user
+      @current_user = session[:userinfo]
+
+      redirect_to '/' if @current_user.nil?
+    end
+
     # Never trust parameters from the scary internet, only allow the white list through.
     def organization_params
-      params.require(:organization).permit(:name, :owner_identifier)
+      params.require(:organization).permit(:name)
     end
 end
