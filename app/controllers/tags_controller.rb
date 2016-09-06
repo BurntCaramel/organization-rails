@@ -6,16 +6,21 @@ class TagsController < ApplicationController
     @tags = Tag.all
   end
 
+  def show
+    @item_relationships = @tag.item_relationships.reject(&:new_record?)
+    @new_item_relationship = @tag.item_relationships.build
+  end
+
   def new
-    @tag = Tag.new
+    @tag = @organization.tags.build
   end
 
   def create
-    @tag = Tag.new(tag_params)
+    @tag = @organization.tags.create(tag_params)
 
     respond_to do |format|
       if @tag.save
-        format.html { redirect_to @tag, notice: 'Tag was successfully created.' }
+        format.html { redirect_to [@organization, @tag], notice: 'Tag was successfully created.' }
         format.json { render :show, status: :created, location: @tag }
       else
         format.html { render :new }

@@ -1,12 +1,20 @@
 Rails.application.routes.draw do
+  get 'item_tag_relationships/create'
+
+  get 'item_tag_relationships/destroy'
+
   root to: 'dashboard#index'
 
   get '/auth/auth0/callback' => 'auth0#callback'
   get '/auth/failure' => 'auth0#failure'
 
+  if Rails.env.development?
+    get '/auth/force' => 'auth0#dev_force_sign_in'
+  end
+
   resources :organizations do
-    resources :tags, only: [:index, :new, :create, :edit, :update, :destroy]
-    resources :tag_item_relationships, only: [:create, :destroy]
+    resources :tags
+    resources :item_tag_relationships, only: [:create, :destroy]
   end
 
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html

@@ -1,13 +1,14 @@
 class OrganizationsController < ApplicationController
-  before_action :set_current_user, only: [:index, :show, :edit, :update, :destroy]
+  before_action :require_current_user
   before_action :set_organization, only: [:show, :edit, :update, :destroy]
+  before_action :create_new_organization, only: [:new, :create]
+
+  include SessionsHelper
 
   # GET /organizations
   # GET /organizations.json
   def index
-    # @organizations = HTTParty.get("/1/@")['items']
-    # @organizations = Organization.where(owner_identifier: @current_user['id'])
-    @organizations = Organization.all
+    @organizations = Organization.where(owner_identifier: current_user_identifier)
   end
 
   # GET /organizations/1
@@ -18,7 +19,6 @@ class OrganizationsController < ApplicationController
 
   # GET /organizations/new
   def new
-    @organization = Organization.new(owner_identifier: @current_user['id'])
   end
 
   # GET /organizations/1/edit
@@ -28,7 +28,7 @@ class OrganizationsController < ApplicationController
   # POST /organizations
   # POST /organizations.json
   def create
-    @organization = Organization.new(organization_params)
+    @organization.assign_attributes(organization_params)
 
     respond_to do |format|
       if @organization.save
@@ -66,21 +66,16 @@ class OrganizationsController < ApplicationController
   end
 
   private
-    # Use callbacks to share common setup or constraints between actions.
     def set_organization
-      @organization = Organization.find(params[:id])
+      @organization = Organization.find_by(id: params[:id], owner_identifier: current_user_identifier)
+      redirect_to(organizations_url, alert: 'You do not own this organization.') if @organization.nil?
     end
 
-    # Never trust parameters from the scary internet, only allow the white list through.
+    def create_new_organization
+      @organization = Organization.new(owner_identifier: current_user_identifier)
+    end
+
     def organization_params
       params.require(:organization).permit(:name)
-    end
-
-    def set_current_user
-      @current_user = session[:userinfo]
-
-      #if Rails.env.production?
-        redirect_to '/' if @current_user.nil?
-      #end
     end
 end

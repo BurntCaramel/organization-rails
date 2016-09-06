@@ -1,0 +1,19 @@
+<p id="notice"><%= notice %></p>
+
+<h2>#<%= @tag.name %></h2>
+
+<p><%= pluralize(@item_relationships.count, 'item') %></p>
+
+<ul>
+<% @item_relationships.each do |item_relationship| %>
+  <li>
+  <%= item_relationship.item_sha_256 %>
+  </li>
+<% end %>
+</ul>
+
+<h3>Tag item</h3>
+<%= render 'item-form', item_tag_relationship: @new_item_relationship %>
+
+<%= link_to 'Edit', edit_organization_tag_path(@organization, @tag) %> |
+<%= link_to 'Back', organization_tags_path(@organization) %>

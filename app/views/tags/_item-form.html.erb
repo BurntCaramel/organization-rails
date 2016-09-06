@@ -1,0 +1,24 @@
+<%= form_for([@organization, item_tag_relationship]) do |f| %>
+  <% if item_tag_relationship.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(item_tag_relationship.errors.count, "error") %> prohibited this relationship from being saved:</h2>
+
+      <ul>
+      <% item_tag_relationship.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <%= hidden_field_tag :tag_id, @tag.id %>
+
+  <div class="field">
+    <%= f.label :item_sha_256, 'SHA256' %>
+    <%= f.text_field :item_sha_256 %>
+  </div>
+
+  <div class="actions">
+    <%= f.submit 'Tag item' %>
+  </div>
+<% end %>
