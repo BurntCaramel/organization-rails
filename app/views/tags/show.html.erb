@@ -1,8 +1,11 @@
-<p id="notice"><%= notice %></p>
+<article>
+<header>
+<h1>#<%= @tag.name %></h1>
+<p><%= link_to 'Edit', edit_organization_tag_path(@organization, @tag) %></p>
+</header>
 
-<h2>#<%= @tag.name %></h2>
-
-<p><%= pluralize(@item_relationships.count, 'item') %></p>
+<section>
+<p><%= pluralize(@item_relationships.count, 'item') %> tagged</p>
 
 <ul>
 <% @item_relationships.each do |item_relationship| %>
@@ -11,9 +14,14 @@
   </li>
 <% end %>
 </ul>
+</section>
 
+<section class="nested">
 <h3>Tag item</h3>
 <%= render 'item-form', item_tag_relationship: @new_item_relationship %>
+</section>
 
-<%= link_to 'Edit', edit_organization_tag_path(@organization, @tag) %> |
-<%= link_to 'Back', organization_tags_path(@organization) %>
+<nav>
+<p><%= link_to 'Back to Tags', organization_tags_path(@organization) %></p>
+</nav>
+</article>

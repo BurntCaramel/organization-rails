@@ -1,5 +1,14 @@
+<article>
+<header>
 <h1>New Tag</h1>
+</header>
 
+<section>
 <%= render 'form', tag: @tag %>
+</section>
 
-<%= link_to 'Back', organization_tags_path(@organization) %>
+<nav>
+<%= link_to 'Back to Tags', organization_tags_path(@organization) %>
+</nav>
+
+</article>

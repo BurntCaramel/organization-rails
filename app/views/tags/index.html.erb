@@ -1,27 +1,21 @@
-<p id="notice"><%= notice %></p>
-
+<header>
 <h1>Tags</h1>
+</header>
 
-<table>
-  <thead>
-    <tr>
-      <th>Name</th>
-      <th colspan="3"></th>
-    </tr>
-  </thead>
+<article>
 
-  <tbody>
-    <% @tags.each do |tag| %>
-      <tr>
-        <td><%= tag.name %></td>
-        <td><%= link_to 'Show', [@organization, tag] %></td>
-        <td><%= link_to 'Edit', edit_organization_tag_path(@organization, tag) %></td>
-        <td><%= link_to 'Destroy', [@organization, tag], method: :delete, data: { confirm: 'Are you sure?' } %></td>
-      </tr>
-    <% end %>
-  </tbody>
-</table>
+<section>
+<% @tags.each do |tag| %>
+  <article>
+    <h2><%= link_to "##{tag.name}", [@organization, tag] %></h2>
+  </article>
+<% end %>
+</section>
 
-<br>
-
+<nav>
+<p>
 <%= link_to 'New Tag', new_organization_tag_path(@organization) %>
+</p>
+</nav>
+
+</article>

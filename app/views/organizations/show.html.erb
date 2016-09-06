@@ -1,9 +1,22 @@
-<p id="notice"><%= notice %></p>
+<nav>
+<h2>
+<%= link_to 'Organizations', organizations_path %>
+</h2>
+</nav>
 
+<article>
+
+<header>
+<h1>@<%= @organization.name %></h1>
 <p>
-  <strong>Name:</strong>
-  <%= @organization.name %>
+<%= link_to 'Settings', edit_organization_path(@organization) %>
 </p>
+</header>
 
-<%= link_to 'Edit', edit_organization_path(@organization) %> |
-<%= link_to 'Back', organizations_path %>
+<nav>
+<p>
+<%= link_to 'Tags', organization_tags_path(@organization) %>
+</p>
+</nav>
+
+</article>

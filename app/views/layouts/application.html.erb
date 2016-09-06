@@ -1,7 +1,7 @@
-<!DOCTYPE html>
+<!doctype html>
 <html>
   <head>
-    <title>RailsOrganization</title>
+    <title>Organizations · Royal Icing</title>
     <%= csrf_meta_tags %>
 
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
@@ -9,6 +9,9 @@
   </head>
 
   <body>
+    <p id="alert"><%= alert %></p>
+    <p id="notice"><%= notice %></p>
+
     <%= yield %>
   </body>
 </html>
