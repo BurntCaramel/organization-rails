@@ -24,8 +24,8 @@ staging:
   adapter: mysql2
   encoding: utf8
   pool: 10
-  database: organizations
-  username: web
+  database: "<%= ENV['MYSQL_DATABASE'] %>"
+  username: "<%= ENV['MYSQL_USERNAME'] %>"
   password: "<%= ENV['MYSQL_PASSWORD'] %>"
 
 production:
@@ -34,4 +34,6 @@ production:
   pool: 10
   database: organizations
   username: web
+  database: "<%= ENV['MYSQL_DATABASE'] %>"
+  username: "<%= ENV['MYSQL_USERNAME'] %>"
   password: "<%= ENV['MYSQL_PASSWORD'] %>"
