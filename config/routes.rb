@@ -1,8 +1,4 @@
 Rails.application.routes.draw do
-  get 'item_tag_relationships/create'
-
-  get 'item_tag_relationships/destroy'
-
   root to: 'dashboard#index'
 
   get '/auth/auth0/callback' => 'auth0#callback'
