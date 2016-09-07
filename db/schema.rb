@@ -13,22 +13,22 @@
 ActiveRecord::Schema.define(version: 20160905021643) do
 
   create_table "item_tag_relationships", force: :cascade do |t|
-    t.integer  "organization_id"
-    t.integer  "tag_id"
-    t.string   "item_sha_256",    null: false
-    t.datetime "created_at",      null: false
-    t.datetime "updated_at",      null: false
-    t.index ["organization_id", "item_sha_256"], name: "by_organization_item"
-    t.index ["organization_id", "tag_id", "item_sha_256"], name: "by_organization_tag_item", unique: true
-    t.index ["organization_id"], name: "index_item_tag_relationships_on_organization_id"
+    t.integer  "tag_id",       null: false
+    t.string   "item_sha_256", null: false
+    t.datetime "created_at",   null: false
+    t.datetime "updated_at",   null: false
+    t.index ["item_sha_256"], name: "by_item"
+    t.index ["tag_id", "item_sha_256"], name: "by_tag_item", unique: true
     t.index ["tag_id"], name: "index_item_tag_relationships_on_tag_id"
   end
 
   create_table "organizations", force: :cascade do |t|
-    t.string   "name"
-    t.string   "owner_identifier"
+    t.string   "name",             null: false
+    t.string   "owner_identifier", null: false
     t.datetime "created_at",       null: false
     t.datetime "updated_at",       null: false
+    t.index ["name"], name: "index_organizations_on_name", unique: true
+    t.index ["owner_identifier"], name: "index_organizations_on_owner_identifier"
   end
 
   create_table "tags", force: :cascade do |t|

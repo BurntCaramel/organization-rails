@@ -1,7 +1,7 @@
 class CreateItemTagRelationships < ActiveRecord::Migration[5.0]
   def change
     create_table :item_tag_relationships do |t|
-      t.references :tag, foreign_key: true
+      t.references :tag, foreign_key: true, null: false
       t.string :item_sha_256, null: false
 
       t.timestamps
