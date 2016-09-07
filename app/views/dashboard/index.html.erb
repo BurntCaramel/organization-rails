@@ -1,5 +1,7 @@
+<article>
 <% if @current_user.nil? %>
 <%= render 'log-in-passwordless' %>
 <% else %>
-<%= @current_user.inspect %>
+<p><%= link_to 'Organizations', organizations_path %></p>
 <% end %>
+</article>

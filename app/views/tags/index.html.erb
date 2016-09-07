@@ -1,8 +1,12 @@
+<nav>
+<h2><%= link_to "@#{@organization.name}", @organization %></h2>
+</nav>
+
+<article>
+
 <header>
 <h1>Tags</h1>
 </header>
-
-<article>
 
 <section>
 <% @tags.each do |tag| %>

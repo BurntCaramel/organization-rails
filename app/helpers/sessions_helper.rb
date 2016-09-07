@@ -9,8 +9,12 @@ module SessionsHelper
     session[:current_user]
   end
 
-  def require_current_user
+  def check_current_user
     @current_user = session[:current_user]
+  end
+
+  def require_current_user
+    check_current_user
     redirect_to_dashboard if @current_user.nil?
   end
 
