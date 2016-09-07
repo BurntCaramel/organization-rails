@@ -19,3 +19,19 @@ development:
 test:
   <<: *sqlite3
   database: db/test.sqlite3
+
+staging:
+  adapter: mysql2
+  encoding: utf8
+  pool: 10
+  database: organizations
+  username: web
+  password: "<%= ENV['MYSQL_PASSWORD'] %>"
+
+production:
+  adapter: mysql2
+  encoding: utf8
+  pool: 10
+  database: organizations
+  username: web
+  password: "<%= ENV['MYSQL_PASSWORD'] %>"
