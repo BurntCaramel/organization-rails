@@ -62,7 +62,7 @@ main {
 
 %action-area {
   padding: 0.333em 0.444em;
-  background-color: rgba($link-color, 0.1);
+  background-color: rgba($link-color, 0.07);
 }
 
 %button {
@@ -159,6 +159,14 @@ form {
 header.primary {
   @extend %action-area;
   @extend %content-holder;
+
+  > nav {
+    text-align: right;
+
+    > * {
+      display: inline-block;
+    }
+  }
 }
 
 #flash {
