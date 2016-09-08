@@ -31,12 +31,16 @@ class OrganizationsController < ApplicationController
     @organization.assign_attributes(organization_params)
 
     respond_to do |format|
-      if @organization.save
+      begin
+        @organization.save!
         format.html { redirect_to @organization, notice: 'Organization was successfully created.' }
         format.json { render :show, status: :created, location: @organization }
-      else
-        format.html { render :new }
-        format.json { render json: @organization.errors, status: :unprocessable_entity }
+      rescue ActiveRecord::RecordNotUnique => e
+        format.html {
+          flash.alert = "Organization with name #{@organization.name} already exists."
+          render :new
+        }
+        format.json { render json: [e], status: :unprocessable_entity }
       end
     end
   end
@@ -45,12 +49,16 @@ class OrganizationsController < ApplicationController
   # PATCH/PUT /organizations/1.json
   def update
     respond_to do |format|
-      if @organization.update(organization_params)
+      begin
+        @organization.update! organization_params
         format.html { redirect_to @organization, notice: 'Organization was successfully updated.' }
         format.json { render :show, status: :ok, location: @organization }
-      else
-        format.html { render :edit }
-        format.json { render json: @organization.errors, status: :unprocessable_entity }
+      rescue ActiveRecord::RecordNotUnique => e
+        format.html {
+          flash.alert = "Organization with name #{@organization.name} already exists." 
+          render :edit
+        }
+        format.json { render json: [e], status: :unprocessable_entity }
       end
     end
   end

@@ -16,15 +16,19 @@ class TagsController < ApplicationController
   end
 
   def create
-    @tag = @organization.tags.create(tag_params)
+    @tag = @organization.tags.build(tag_params)
 
     respond_to do |format|
-      if @tag.save
+      begin
+        @tag.save!
         format.html { redirect_to [@organization, @tag], notice: 'Tag was successfully created.' }
         format.json { render :show, status: :created, location: @tag }
-      else
-        format.html { render :new }
-        format.json { render json: @tag.errors, status: :unprocessable_entity }
+      rescue ActiveRecord::RecordNotUnique => e
+        format.html {
+          flash.alert = "Tag with name #{@tag.name} already exists."
+          render :new
+        }
+        format.json { render json: [e], status: :unprocessable_entity }
       end
     end
   end
