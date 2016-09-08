@@ -21,17 +21,35 @@ body {
 	-webkit-hypens: auto; -ms-hypens: auto; hypens: auto;
 }
 
-%content {
+%content-holder {
   > * {
     max-width: 30rem;
     margin: auto;
   }
 }
 
-nav,
-header,
-article {
-  @extend %content;
+main {
+  > section,
+  > nav,
+  > header,
+  > article {
+    @extend %content-holder;
+  }
+
+  > nav {
+    @extend %action-area;
+
+    > .content {
+      > * {
+        display: inline-block;
+        font-size: 1rem;
+      }
+
+      > * + *:before {
+        content: ' > '
+      }
+    }
+  }
 }
 
 %link {
@@ -140,24 +158,16 @@ form {
 
 header.primary {
   @extend %action-area;
+  @extend %content-holder;
 }
 
-main > nav {
-  @extend %action-area;
-
-  > .content {
-    > * {
-      display: inline-block;
-      font-size: 1rem;
-    }
-
-    > * + *:before {
-      content: ' > '
-    }
-  }
+#flash {
+  @extend %space-below;
 }
-
-#notice {
+#flash-alert {
+  color: red;
+}
+#flash-notice {
   color: green;
 }
 
