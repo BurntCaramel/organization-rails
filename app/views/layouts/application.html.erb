@@ -9,10 +9,15 @@
 </head>
 
 <body>
+
+<%= render 'layouts/header' %>
+
 <p id="alert"><%= alert %></p>
 <p id="notice"><%= notice %></p>
 
+<main>
 <%= yield %>
+</main>
 
 </body>
 </html>

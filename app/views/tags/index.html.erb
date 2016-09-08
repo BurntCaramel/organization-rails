@@ -1,6 +1,4 @@
-<nav>
-<h2><%= link_to "@#{@organization.name}", @organization %></h2>
-</nav>
+<%= render 'nav' %>
 
 <article>
 
@@ -11,7 +9,11 @@
 <section>
 <% @tags.each do |tag| %>
   <article>
-    <h2><%= link_to "##{tag.name}", [@organization, tag] %></h2>
+    <h2>
+    <%= link_to "##{tag.name}", [@organization, tag] %>
+    ·
+    <%= tag.item_relationships.count %>
+    </h2>
   </article>
 <% end %>
 </section>

@@ -15,19 +15,23 @@ body {
   box-sizing: border-box;
 	max-width: 100vw;
 	margin: auto;
-	padding: 1.333333333rem 1.7em;
+	//padding: 1.333333333rem 1.7em;
 	line-height: 1.333333333rem;
 	font-family: system, "-apple-system", "-webkit-system-font", BlinkMacSystemFont, "Helvetica Neue", "Helvetica", "Segoe UI", "Roboto", "Arial", "freesans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
 	-webkit-hypens: auto; -ms-hypens: auto; hypens: auto;
 }
 
-nav,
-header,
-article {
+%content {
   > * {
     max-width: 30rem;
     margin: auto;
   }
+}
+
+nav,
+header,
+article {
+  @extend %content;
 }
 
 %link {
@@ -64,20 +68,6 @@ button {
   @extend %button;
 }
 
-nav {
-  > * {
-    @extend %space-below;
-  }
-
-  h2 {
-    font-size: 0.75rem;
-  }
-
-  a {
-    @extend %button;
-  }
-}
-
 header {
   margin-bottom: 1rem;
 
@@ -109,6 +99,20 @@ article {
     margin-bottom: 1rem;
   }
 
+  nav {
+    > * {
+      @extend %space-below;
+    }
+
+    h2 {
+      font-size: 0.75rem;
+    }
+
+    a {
+      @extend %button;
+    }
+  }
+
   .nested {
     @extend %action-area;
 
@@ -131,6 +135,25 @@ form {
 .field {
   input {
     font-size: 1rem;
+  }
+}
+
+header.primary {
+  @extend %action-area;
+}
+
+main > nav {
+  @extend %action-area;
+
+  > .content {
+    > * {
+      display: inline-block;
+      font-size: 1rem;
+    }
+
+    > * + *:before {
+      content: ' > '
+    }
   }
 }
 
