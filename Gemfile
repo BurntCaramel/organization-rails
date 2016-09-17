@@ -25,6 +25,8 @@ gem 'jbuilder', '~> 2.5'
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'
 
+gem 'attr_encrypted', '~> 3.0.0'
+
 gem 'figaro'
 
 gem 'httparty'

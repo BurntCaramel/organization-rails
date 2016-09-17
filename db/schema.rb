@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160905021643) do
+ActiveRecord::Schema.define(version: 20160908072942) do
 
   create_table "item_tag_relationships", force: :cascade do |t|
     t.integer  "tag_id",       null: false
@@ -29,6 +29,15 @@ ActiveRecord::Schema.define(version: 20160905021643) do
     t.datetime "updated_at",       null: false
     t.index ["name"], name: "index_organizations_on_name", unique: true
     t.index ["owner_identifier"], name: "index_organizations_on_owner_identifier"
+  end
+
+  create_table "s3_credentials", force: :cascade do |t|
+    t.integer  "organization_id",   null: false
+    t.binary   "encrypted_info",    null: false
+    t.binary   "encrypted_info_iv", null: false
+    t.datetime "created_at",        null: false
+    t.datetime "updated_at",        null: false
+    t.index ["organization_id"], name: "index_s3_credentials_on_organization_id"
   end
 
   create_table "tags", force: :cascade do |t|

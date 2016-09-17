@@ -1,9 +1,9 @@
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
 one:
-  name: MyString
-  owner_identifier: MyString
+  name: Org1
+  owner_identifier: owner123
 
 two:
-  name: MyString
-  owner_identifier: MyString
+  name: Org2
+  owner_identifier: owner123

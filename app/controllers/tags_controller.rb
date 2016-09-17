@@ -1,9 +1,11 @@
 class TagsController < ApplicationController
-  before_action :set_organization
+  include OrganizationsHelper
+
+  before_action :set_parent_organization
   before_action :set_tag, only: [:show, :edit, :update, :destroy]
 
   def index
-    @tags = Tag.all
+    @tags = @organization.tags
   end
 
   def show
@@ -34,9 +36,6 @@ class TagsController < ApplicationController
   end
 
   private
-    def set_organization
-      @organization = Organization.find(params[:organization_id])
-    end
 
     def set_tag
       @tag = Tag.find(params[:id])

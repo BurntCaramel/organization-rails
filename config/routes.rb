@@ -11,6 +11,7 @@ Rails.application.routes.draw do
   resources :organizations do
     resources :tags
     resources :item_tag_relationships, only: [:create, :destroy]
+    resources :s3_credentials
   end
 
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html

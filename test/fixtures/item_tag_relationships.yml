@@ -2,8 +2,8 @@
 
 one:
   tag: one
-  sha256: MyString
+  item_sha_256: b51cf641a376e16166587cfe41f46e37bd3a510c13a8b79f0682985c1603e4d8
 
 two:
   tag: two
-  sha256: MyString
+  item_sha_256: b51cf641a376e16166587cfe41f46e37bd3a510c13a8b79f0682985c1603e4d8

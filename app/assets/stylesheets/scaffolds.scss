@@ -74,6 +74,9 @@ main {
   text-decoration: none;
 }
 
+%space-above {
+  margin-top: 0.444rem;
+}
 %space-below {
   margin-bottom: 0.444rem;
 }
@@ -96,6 +99,12 @@ header {
   a {
     @extend %link--normal;
   }
+}
+
+dt {
+  @extend %space-above;
+  
+  font-weight: bold;
 }
 
 article {
@@ -171,6 +180,8 @@ header.primary {
 
 #flash {
   @extend %space-below;
+
+  background-color: #eee;
 }
 #flash-alert {
   color: red;
@@ -186,11 +197,10 @@ header.primary {
 }
 
 #error_explanation {
-  width: 450px;
-  border: 2px solid red;
   padding: 7px;
   padding-bottom: 0;
   margin-bottom: 20px;
+  color: black;
   background-color: #f0f0f0;
 
   h2 {
@@ -204,9 +214,11 @@ header.primary {
     color: #fff;
   }
 
+  ul {
+    padding-left: 1em;
+  }
   ul li {
     font-size: 12px;
-    list-style: square;
   }
 }
 

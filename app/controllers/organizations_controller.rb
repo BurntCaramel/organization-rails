@@ -1,7 +1,7 @@
 class OrganizationsController < ApplicationController
   before_action :require_current_user
-  before_action :set_organization, only: [:show, :edit, :update, :destroy]
   before_action :create_new_organization, only: [:new, :create]
+  before_action :set_organization, only: [:show, :edit, :update, :destroy]
 
   include SessionsHelper
 
@@ -76,7 +76,7 @@ class OrganizationsController < ApplicationController
   private
     def set_organization
       @organization = Organization.find_by(id: params[:id], owner_identifier: current_user_identifier)
-      redirect_to(organizations_url, alert: 'You do not own this organization.') if @organization.nil?
+      redirect_to(organizations_url, alert: 'You are not a part of this organization.') if @organization.nil?
     end
 
     def create_new_organization
