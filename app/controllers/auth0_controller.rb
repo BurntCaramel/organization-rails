@@ -10,7 +10,7 @@ class Auth0Controller < ApplicationController
 
   def failure
     # show a failure page or redirect to an error page
-    @error_msg = request.params['message']
+    @error_message = request.params['message']
   end
 
   def dev_force_sign_in

@@ -7,16 +7,37 @@
 </p>
 </header>
 
+<h2>Ingredients</h2>
 <nav>
 <p>
-<%= link_to 'Stories', organization_stories_path(@organization) %>
-</p>
-<p>
-<%= link_to 'Text', organization_stories_path(@organization) %>
+<%= link_to 'Texts', organization_texts_path(@organization) %>
 </p>
 <p>
 <%= link_to 'Images', organization_stories_path(@organization) %>
 </p>
+<p>
+<%= link_to 'Records', organization_stories_path(@organization) %>
+</p>
+</nav>
+
+<h2>Presentation</h2>
+<nav>
+<p>
+<%= link_to 'Units', organization_stories_path(@organization) %>
+</p>
+<p>
+<%= link_to 'Recipes', organization_stories_path(@organization) %>
+</p>
+<p>
+<%= link_to 'Stories', organization_stories_path(@organization) %>
+</p>
+<p>
+<%= link_to 'Showcases', organization_stories_path(@organization) %>
+</p>
+</nav>
+
+<h2>Settings</h2>
+<nav>
 <p>
 <%= link_to 'Tags', organization_tags_path(@organization) %>
 </p>
