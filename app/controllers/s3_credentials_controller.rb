@@ -51,7 +51,7 @@ class S3CredentialsController < ApplicationController
     end
 
     def create_new_s3_credential
-      @s3_credential = @organization.s3_credentials.build
+      @s3_credential = @organization.s3_credentials.build(info: {})
     end
 
     def set_s3_credential
