@@ -4,4 +4,16 @@ class Organization < ApplicationRecord
 
   # Validation
   validates :owner_identifier, presence: true
+
+  def story_tag
+    tags.find_by name: 'story'
+  end
+
+  def image_tag
+    tags.find_by name: 'image'
+  end
+
+  def record_tag
+    tags.find_by name: 'record'
+  end
 end

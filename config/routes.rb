@@ -11,6 +11,7 @@ Rails.application.routes.draw do
   resources :organizations do
     resources :tags
     resources :item_tag_relationships, only: [:create, :destroy]
+    resources :stories
     resources :s3_credentials
   end
 
