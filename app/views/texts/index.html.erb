@@ -9,13 +9,14 @@
 
 <p><%= pluralize(@item_relationships.count, 'item') %> tagged</p>
 
-<ul>
-<% @item_relationships.each do |item_relationship| %>
-  <li>
-  <%= item_relationship.item_sha_256 %>
-  </li>
+<section>
+<% @items.each do |item| %>
+  <article class="nested">
+  <small><strong><%= item[:sha256] %></strong></small>
+  <pre><%= item[:text] %></pre>
+  </article>
 <% end %>
-</ul>
+</section>
 
 <% end %>
 

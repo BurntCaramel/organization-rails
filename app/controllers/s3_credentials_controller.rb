@@ -17,11 +17,11 @@ class S3CredentialsController < ApplicationController
 
   def create
     params = s3_credential_params
-    @s3_credential.assign_attributes(info: {
+    @s3_credential.info = {
       'accessKeyID': params[:access_key_id],
       'secretAccessKey': params[:secret_access_key],
       'region': params[:region]
-    })
+    }
 
     respond_to do |format|
       begin

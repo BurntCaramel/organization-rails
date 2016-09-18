@@ -77,6 +77,13 @@ button {
   @extend %button;
 }
 
+small {
+  strong {
+    font-size: 66.666%;
+    font-weight: inherit;
+  }
+}
+
 main {
   > section,
   > nav,
