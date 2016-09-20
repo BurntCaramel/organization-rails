@@ -29,6 +29,8 @@ gem 'attr_encrypted', '~> 3.0.0'
 
 gem 'aws-sdk', '~> 2'
 
+gem 'imgix'
+
 gem 'figaro'
 
 gem 'httparty'

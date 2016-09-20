@@ -1,0 +1,22 @@
+<article>
+<h1>Images</h1>
+
+<% if @item_relationships.nil? %>
+
+<p>Tag items #image for them to appear here.</p>
+
+<% else %>
+
+<p><%= pluralize(@item_relationships.count, 'image') %> tagged</p>
+
+<section>
+<% @items.each do |item| %>
+  <article class="nested">
+  <%= render_image item[:sha256] %>
+  </article>
+<% end %>
+</section>
+
+<% end %>
+
+</article>

@@ -3,8 +3,8 @@ class TextsController < ApplicationController
   include S3Helper
 
   before_action :set_parent_organization
-  before_action :set_tag
   before_action :set_s3_client
+  before_action :set_tag
 
   def index
     @item_relationships = @text_tag.item_relationships if @text_tag.present?

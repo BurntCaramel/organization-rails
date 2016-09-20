@@ -13,6 +13,7 @@ Rails.application.routes.draw do
     resources :item_tag_relationships, only: [:create, :destroy]
 
     resources :texts
+    resources :images
     resources :stories
 
     resources :s3_credentials
