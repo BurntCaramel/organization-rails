@@ -1,3 +1,5 @@
+<%= render 'organizations/nav' %>
+
 <article>
 <h1>Images</h1>
 
@@ -11,9 +13,15 @@
 
 <section>
 <% @items.each do |item| %>
-  <article class="nested">
+  <figure class="nested">
   <%= render_image item[:sha256] %>
-  </article>
+    <figcaption>
+    <% item[:tag_relationships].each do |item_tag_relationship| %>
+      <% tag = item_tag_relationship.tag %>
+      <%= link_to "##{ item_tag_relationship.tag.name }", [@organization, tag] %>
+    <% end %>
+    </figcaption>
+  </figure>
 <% end %>
 </section>
 
