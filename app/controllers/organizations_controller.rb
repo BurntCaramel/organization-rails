@@ -4,6 +4,7 @@ class OrganizationsController < ApplicationController
   before_action :set_organization, only: [:show, :edit, :update, :destroy]
 
   include SessionsHelper
+  include DashboardHelper
 
   # GET /organizations
   # GET /organizations.json
@@ -71,6 +72,8 @@ class OrganizationsController < ApplicationController
       format.html { redirect_to organizations_url, notice: 'Organization was successfully destroyed.' }
       format.json { head :no_content }
     end
+
+    redirect_to_dashboard
   end
 
   private

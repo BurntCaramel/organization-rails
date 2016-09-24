@@ -43,6 +43,7 @@ class S3CredentialsController < ApplicationController
 
   def destroy
     @s3_credential.destroy
+    redirect_to organization_s3_credentials_path(@organization)
   end
 
   private
