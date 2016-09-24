@@ -100,8 +100,6 @@ main {
   }
 
   > nav {
-    @extend %action-area;
-
     > .content {
       > * {
         display: inline-block;
@@ -123,7 +121,16 @@ nav, h1, h2, h3 {
 }
 
 header {
+  padding-top: 1rem;
   margin-bottom: 1rem;
+
+  .actions {
+    display: flex;
+
+    > * {
+      margin-right: 0.75em;
+    }
+  }
 
   p {
     font-size: 0.75rem;
