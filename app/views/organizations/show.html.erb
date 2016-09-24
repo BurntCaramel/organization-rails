@@ -7,10 +7,6 @@
 </p>
 </header>
 
-<%# @item_tag_relationships.each do |item_tag_relationship| %>
-<%#= item_tag_relationship.id %>
-<%# end %>
-
 <h2>Ingredients</h2>
 <nav>
 <p>
@@ -46,7 +42,7 @@
 <%= link_to 'Tags', organization_tags_path(@organization) %>
 </p>
 <p>
-<%= link_to 'S3', organization_s3_credentials_path(@organization) %>
+<%= link_to 'S3 Credentials', organization_s3_credentials_path(@organization) %>
 </p>
 </nav>
 

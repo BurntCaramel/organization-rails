@@ -45,6 +45,8 @@ main {
   }
 
   > nav {
+    margin-bottom: 1rem;
+
     > .content {
       > * {
         display: inline-block;
@@ -66,7 +68,7 @@ nav, h1, h2, h3 {
 }
 
 header {
-  padding-top: 1rem;
+  //padding-top: 1rem;
   margin-bottom: 1rem;
 
   .actions {

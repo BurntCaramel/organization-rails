@@ -1,8 +1,7 @@
-<nav>
-<div class="content">
-<h2><%= link_to "@#{@organization.name}", @organization %></h2>
-<% if @s3_credential.present? %>
-<h3><%= link_to 'S3 Credentials', organization_s3_credentials_path(@organization) %></h3>
+<%= render 'organizations/nav' do %>
+  <% if @s3_credential.present? %>
+  <h3><%= link_to 'S3 Credentials', organization_s3_credentials_path(@organization) %></h3>
+  <% else %>
+  <h1><%= 'S3 Credentials' %></h1>
+  <% end %>
 <% end %>
-</div>
-</nav>
