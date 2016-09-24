@@ -1,6 +1,10 @@
 class ItemTagRelationshipsController < ApplicationController
+  include OrganizationsHelper
+
+  before_action :set_parent_organization
+
   def create
-    @tag = Tag.find(params[:tag_id])
+    @tag = @organization.tags.find(params[:tag_id])
     @relationship = @tag.item_relationships.build(item_tag_relationship_params)
 
     respond_to do |format|
@@ -16,7 +20,8 @@ class ItemTagRelationshipsController < ApplicationController
   end
 
   def destroy
-
+    @relationship = @organization.item_tag_relationships.find(params[:id])
+    @relationship.destroy
   end
 
   private

@@ -13,6 +13,7 @@
 <% @item_relationships.each do |item_relationship| %>
   <li>
   <%= item_relationship.item_sha_256 %>
+  <%= link_to 'Remove', [@organization, item_relationship], data: { confirm: 'Are you sure?' }, method: :delete %>
   </li>
 <% end %>
 </ul>
@@ -24,5 +25,6 @@
 
 <nav>
 <p><%= link_to 'Back to Tags', organization_tags_path(@organization) %></p>
+<p><%= link_to 'New Tag', new_organization_tag_path(@organization) %></p>
 </nav>
 </article>
