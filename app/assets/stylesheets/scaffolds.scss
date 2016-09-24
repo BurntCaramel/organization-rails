@@ -112,6 +112,10 @@ article {
     line-height: 1.2;
   }
 
+  p + p {
+    @extend %space-above;
+  }
+
   header,
   section {
     margin-bottom: 1rem;
