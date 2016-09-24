@@ -8,9 +8,9 @@
 
 <section>
 <% @tags.each do |tag| %>
-  <article>
+  <article class="tag">
     <h2>
-    <%= link_to "##{tag.name}", [@organization, tag] %>
+    <%= link_to "##{tag.name}", [@organization, tag], class: "tag--#{tag.name}" %>
     ·
     <%= tag.item_relationships.count %>
     </h2>

@@ -1,59 +1,4 @@
-$background-color: #111; // #211;
-
-$link-color: #f82484;
-$link-color--hover: #eee;
-
-$kind-text-color:rgb(247, 203, 71);
-$kind-image-color: rgb(15, 177, 231);
-$kind-record-color: rgb(242, 64, 64);
-$nested-kind-opacity: 0.16;
-
-%content-holder {
-  > * {
-    max-width: 30rem;
-    margin: auto;
-  }
-}
-
-%link {
-  color: $link-color;
-
-  &:hover {
-    color: $link-color--hover;
-  }
-}
-
-%link--normal {
-  text-decoration: none;
-}
-
-%action-area {
-  padding: 0.333em 0.444em;
-  background-color: rgba($link-color, 0.075);
-}
-%action-area--hover {
-  background-color: rgba($link-color--hover, 0.07);
-}
-
-%button {
-  @extend %link;
-  @extend %action-area;
-
-  display: inline-block;
-  border: none;
-  text-decoration: none;
-
-  &:hover {
-    @extend %action-area--hover;
-  }
-}
-
-%space-above {
-  margin-top: 0.444rem;
-}
-%space-below {
-  margin-bottom: 0.444rem;
-}
+@import 'base';
 
 * {
   margin: 0;
@@ -180,18 +125,9 @@ article {
 
   .nested {
     @extend %action-area;
+    @extend %action-area--tintable;
 
     padding: 1rem;
-
-    &.text-tint {
-      background-color: rgba($kind-text-color, $nested-kind-opacity);
-    }
-    &.image-tint {
-      background-color: rgba($kind-image-color, $nested-kind-opacity);
-    }
-    &.record-tint {
-      background-color: rgba($kind-record-color, $nested-kind-opacity);
-    }
   }
 }
 
