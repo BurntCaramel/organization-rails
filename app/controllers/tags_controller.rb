@@ -41,6 +41,11 @@ class TagsController < ApplicationController
     end
   end
 
+  def destroy
+    @tag.destroy
+    redirect_to organization_tags_path(@organization)
+  end
+
   private
 
     def set_tag
