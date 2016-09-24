@@ -2,48 +2,43 @@
 
 <header>
 <h1>@<%= @organization.name %></h1>
-<p>
-<%= link_to 'Settings', edit_organization_path(@organization) %>
-</p>
 </header>
 
-<h2>Ingredients</h2>
-<nav>
-<p>
+<h2>
 <%= link_to 'Texts', organization_texts_path(@organization) %>
-</p>
-<p>
+</h2>
+<h2>
 <%= link_to 'Images', organization_images_path(@organization) %>
-</p>
-<p>
+</h2>
+<h2>
 <%= link_to 'Records', organization_stories_path(@organization) %>
-</p>
-</nav>
+</h2>
 
-<h2>Presentation</h2>
-<nav>
-<p>
+<hr>
+
+<h2>
 <%= link_to 'Units', organization_stories_path(@organization) %>
-</p>
-<p>
+</h2>
+<h2>
 <%= link_to 'Recipes', organization_stories_path(@organization) %>
-</p>
-<p>
+</h2>
+<h2>
 <%= link_to 'Stories', organization_stories_path(@organization) %>
-</p>
-<p>
+</h2>
+<h2>
 <%= link_to 'Showcases', organization_stories_path(@organization) %>
-</p>
-</nav>
+</h2>
 
-<h2>Settings</h2>
-<nav>
-<p>
+<hr>
+
+<h3>
 <%= link_to 'Tags', organization_tags_path(@organization) %>
-</p>
-<p>
+</h3>
+<h3>
 <%= link_to 'S3 Credentials', organization_s3_credentials_path(@organization) %>
-</p>
-</nav>
+</h3>
+<h3>
+<%= link_to 'Organization', edit_organization_path(@organization) %>
+</h3>
 
 </article>

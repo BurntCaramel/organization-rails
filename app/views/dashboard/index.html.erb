@@ -2,6 +2,6 @@
 <% if @current_user.nil? %>
 <%= render 'log-in-passwordless' %>
 <% else %>
-<p><%= link_to 'Organizations', organizations_path %></p>
+<h2><%= link_to 'Organizations', organizations_path %></h2>
 <% end %>
 </article>

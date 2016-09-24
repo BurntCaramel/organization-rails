@@ -10,11 +10,30 @@ class ItemTagRelationshipsController < ApplicationController
     respond_to do |format|
       begin
         @relationship.save!
-        format.html { redirect_to [@tag.organization, @tag], notice: 'Item was successfully tagged.' }
-        format.json { render json: { success: true }, status: :created, location: @tag }
+        format.html {
+          redirect_to [@tag.organization, @tag],
+          notice: 'Item was successfully tagged.'
+        }
+        format.json {
+          render json: {
+            success: true
+          },
+          status: :created,
+          location: @tag
+        }
       rescue ActiveRecord::RecordNotUnique => e
-        format.html { redirect_to [@tag.organization, @tag], alert: "Item has already been tagged ##{@tag.name}." }
-        format.json { render json: [e], status: :unprocessable_entity }
+        format.html {
+          redirect_to [@tag.organization, @tag],
+          alert: "Item has already been tagged ##{@tag.name}."
+        }
+        format.json {
+          render json: {
+            success: false,
+            error: e,
+            message: "Item has already been tagged ##{@tag.name}."
+          },
+          status: :unprocessable_entity
+        }
       end
     end
   end
