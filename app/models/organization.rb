@@ -13,7 +13,12 @@ class Organization < ApplicationRecord
 
   def tag_relationships_for_item(item_sha_256)
     #item_tag_relationships = ItemTagRelationship.joins(:tag).where('tag.organization = ?', self)
-    item_tag_relationships.where({ item_sha_256: item_sha_256 }).includes(:tag)
+    item_tag_relationships.where(item_sha_256: item_sha_256).includes(:tag)
+  end
+
+  def item_tag_relationships_with_tags(tags)
+    tags = tags.uniq # Reduce when tags are the same
+    item_tag_relationships.where(tag_id: tags).group(:item_sha_256).having('COUNT(*) >= ?', tags.count)
   end
 
   def text_tag

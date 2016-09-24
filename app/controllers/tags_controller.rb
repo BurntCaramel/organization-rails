@@ -1,5 +1,6 @@
 class TagsController < ApplicationController
   include OrganizationsHelper
+  include RelationHelper
 
   before_action :set_parent_organization
   before_action :set_tag, only: [:show, :edit, :update, :destroy]
@@ -9,7 +10,12 @@ class TagsController < ApplicationController
   end
 
   def show
-    @item_relationships = @tag.item_relationships.reject(&:new_record?)
+    @item_relationships = @tag.item_relationships.all # .all omits new record created below
+
+    @text_items = @organization.item_tag_relationships_with_tags([@tag, @organization.text_tag])
+    @image_items = @organization.item_tag_relationships_with_tags([@tag, @organization.image_tag])
+    @record_items = @organization.item_tag_relationships_with_tags([@tag, @organization.record_tag])
+
     @new_item_relationship = @tag.item_relationships.build
   end
 

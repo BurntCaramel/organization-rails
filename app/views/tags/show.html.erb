@@ -6,18 +6,11 @@
 <p><%= link_to 'Edit', edit_organization_tag_path(@organization, @tag) %></p>
 </header>
 
-<section>
-<p><%= pluralize(@item_relationships.count, 'item') %> tagged</p>
+<%= render partial: 'relationships', locals: { item_relationships: @text_items, item_name: 'text', can_remove: false, kind_class: 'text-tint' } %>
+<%= render partial: 'relationships', locals: { item_relationships: @image_items, item_name: 'image', can_remove: false, kind_class: 'image-tint' } %>
+<%= render partial: 'relationships', locals: { item_relationships: @record_items, item_name: 'record', can_remove: false, kind_class: 'record-tint' } %>
 
-<ul>
-<% @item_relationships.each do |item_relationship| %>
-  <li>
-  <%= item_relationship.item_sha_256 %>
-  <%= link_to 'Remove', [@organization, item_relationship], data: { confirm: 'Are you sure?' }, method: :delete %>
-  </li>
-<% end %>
-</ul>
-</section>
+<%= render partial: 'relationships', locals: { item_relationships: @item_relationships, item_name: 'item' } %>
 
 <section class="nested">
 <%= render 'item-form', item_tag_relationship: @new_item_relationship %>

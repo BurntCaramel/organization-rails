@@ -1,0 +1,16 @@
+<% can_remove = local_assigns.fetch :can_remove, true %>
+<% kind_class = local_assigns.fetch :kind_class, nil %>
+
+<section class="nested <%= kind_class %>">
+<p><%= pluralize(count_relation(item_relationships), item_name) %></p>
+<ul class="tagged-items">
+<% item_relationships.each do |item_relationship| %>
+  <li class="tagged-item">
+  <h5 class="tagged-item_hash"><%= item_relationship.item_sha_256 %></h5>
+  <% if can_remove %>
+  <%= link_to 'Remove', [@organization, item_relationship], data: { confirm: 'Are you sure? You can always tag it again.' }, method: :delete %>
+  <% end %>
+  </li>
+<% end %>
+</ul>
+</section>
