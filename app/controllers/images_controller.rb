@@ -7,8 +7,6 @@ class ImagesController < ApplicationController
   before_action :set_tag
   before_action :setup_imgix
 
-  IMGIX_HOST = 's-royalicing-test.imgix.net'
-
   def index
     @items = @item_relationships
     @max_width = 200
@@ -23,9 +21,5 @@ class ImagesController < ApplicationController
     def set_tag
       @image_tag = @organization.image_tag
       @item_relationships = @image_tag.item_relationships if @image_tag.present?
-    end
-
-    def setup_imgix
-      @imgix = Imgix::Client.new(host: IMGIX_HOST)
     end
 end

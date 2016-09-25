@@ -1,9 +1,11 @@
 class TagsController < ApplicationController
   include OrganizationsHelper
   include RelationHelper
+  include ImagesHelper
 
   before_action :set_parent_organization
   before_action :set_tag, only: [:show, :edit, :update, :destroy]
+  before_action :setup_imgix, only: [:show]
 
   def index
     @tags = @organization.tags

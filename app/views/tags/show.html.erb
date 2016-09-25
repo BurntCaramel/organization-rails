@@ -9,9 +9,9 @@
 </div>
 </header>
 
-<%= render partial: 'relationships', locals: { item_relationships: @text_items, item_name: 'text', can_remove: false, kind_class: 'text-tint' } %>
-<%= render partial: 'relationships', locals: { item_relationships: @image_items, item_name: 'image', can_remove: false, kind_class: 'image-tint' } %>
-<%= render partial: 'relationships', locals: { item_relationships: @record_items, item_name: 'record', can_remove: false, kind_class: 'record-tint' } %>
+<%= render partial: 'relationships', locals: { item_relationships: @text_items, item_name: 'text', can_remove: false, kind: 'text', kind_class: 'text-tint' } %>
+<%= render partial: 'relationships', locals: { item_relationships: @image_items, item_name: 'image', can_remove: false, kind: 'image', kind_class: 'image-tint' } %>
+<%= render partial: 'relationships', locals: { item_relationships: @record_items, item_name: 'record', can_remove: false, kind: 'record', kind_class: 'record-tint' } %>
 
 <%= render partial: 'relationships', locals: { item_relationships: @item_relationships, item_name: 'item' } %>
 
