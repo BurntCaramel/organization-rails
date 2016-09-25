@@ -14,6 +14,9 @@ Rails.application.routes.draw do
 
     resources :texts, except: [:update], param: :sha256
     resources :images, except: [:update], param: :sha256 do
+      collection do
+        post 'search'
+      end    
       member do
         get 'imgix'
       end

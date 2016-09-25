@@ -43,11 +43,11 @@ window.promiseCollectedImageURL = function(options) {
 <div class="flambe-app-content">
 Make any file only a click away #primary
 
-Quickly open your most important files. #image #collected: 461e2b1aa6c7bea5361e323eca1c457656caf9f97a2343541d07cdcb83a3eb20 #width: 200
+Quickly open your most important files. #image #collected: @productImage #width: 230
+
+Free on the Mac App Store #cta #primary #large #link: @links.macAppStore
 
 Organization for professionals of all sorts. #image #unsplash: macbook
-
-Free on the Mac App Store #cta #primary #link: @links.macAppStore
 
 @legal #small
 </div>
@@ -70,14 +70,24 @@ Free on the Mac App Store #cta #primary #link: @links.macAppStore
 				"rawContent": "Copyright Patrick Smith. 2016"
 			}
 		]
-	}
+	},
+  {
+    "id": "productImage",
+    "type": "image",
+    "variations": [
+      {
+        "rawContent": "461e2b1aa6c7bea5361e323eca1c457656caf9f97a2343541d07cdcb83a3eb20"
+      }
+    ]
+  }
 ]
 </script>
 <script type='flambe' class="flambe-app-scenarios">
 [
 	{
 		"links": 0,
-		"legal": 0
+		"legal": 0,
+    "productImage": 0
 	}
 ]
 </script>
