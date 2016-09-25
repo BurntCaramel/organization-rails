@@ -17,12 +17,9 @@
 <section>
 <% @items.each do |item| %>
   <figure class="nested">
-  <%= render_image item[:sha256] %>
+    <%= render_image item[:sha256] %>
     <figcaption>
-    <% item[:tag_relationships].each do |item_tag_relationship| %>
-      <% tag = item_tag_relationship.tag %>
-      <%= link_to "##{ item_tag_relationship.tag.name }", [@organization, tag] %>
-    <% end %>
+    <%= render partial: 'shared/tag_relationships', object: item[:tag_relationships] %> 
     </figcaption>
   </figure>
 <% end %>

@@ -25,3 +25,49 @@
 <% end %>
 
 </article>
+
+<div class="flambe-app" data-destination="bootstrap">
+<div class="flambe-app-content">
+Just add hashtags #primary
+
+Create rich layouts just by typing #image #unsplash: dessert
+
+Create fields #field
+And Buttons #button #primary
+Big and Small #button #small
+
+Features #link: @links.features
+
+@legal #small
+</div>
+<script type='flambe' class="flambe-app-ingredients">
+[
+	{
+		"id": "links",
+		"type": "json",
+		"variations": [
+			{
+				"rawContent": "{\"features\": \"https://icing.space/features\"}"
+			}
+		]
+	},
+	{
+		"id": "legal",
+		"type": "text",
+		"variations": [
+			{
+				"rawContent": "Copyright Company Inc. 2016"
+			}
+		]
+	}
+]
+</script>
+<script type='flambe' class="flambe-app-scenarios">
+[
+	{
+		"links": 0,
+		"legal": 0
+	}
+]
+</script>
+</div>

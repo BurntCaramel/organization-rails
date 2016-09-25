@@ -77,6 +77,10 @@ header {
     > * {
       margin-right: 0.75em;
     }
+
+    a {
+      @extend %link--normal;
+    }
   }
 
   p {

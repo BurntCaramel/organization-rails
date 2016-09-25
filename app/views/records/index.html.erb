@@ -1,16 +1,16 @@
 <%= render 'organizations/nav' do %>
-<h1>Texts</h1>
+<h1>Records</h1>
 <% end %>
 
 <article>
 
 <% if @item_relationships.nil? %>
 
-<p>Tag items #text for them to appear here.</p>
+<p>Tag items #record for them to appear here.</p>
 
 <% else %>
 
-<p><%= pluralize(@item_relationships.count, 'text') %> tagged</p>
+<p><%= pluralize(@item_relationships.count, 'record') %> tagged</p>
 
 <section>
 <% @items.each do |item| %>

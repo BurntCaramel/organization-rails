@@ -14,6 +14,7 @@ Rails.application.routes.draw do
 
     resources :texts
     resources :images
+    resources :records
     resources :stories
 
     resources :s3_credentials

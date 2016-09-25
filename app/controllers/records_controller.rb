@@ -1,4 +1,4 @@
-class TextsController < ApplicationController
+class RecordsController < ApplicationController
   include OrganizationsHelper
   include S3Helper
 
@@ -7,7 +7,7 @@ class TextsController < ApplicationController
   before_action :set_tag
 
   def index
-    @item_relationships = @text_tag.item_relationships if @text_tag.present?
+    @item_relationships = @record_tag.item_relationships if @record_tag.present?
 
     @items = @item_relationships.map do |item_relationship|
       sha256 = item_relationship.item_sha_256
@@ -29,6 +29,6 @@ class TextsController < ApplicationController
 
   private
     def set_tag
-      @text_tag = @organization.text_tag
+      @record_tag = @organization.record_tag
     end
 end

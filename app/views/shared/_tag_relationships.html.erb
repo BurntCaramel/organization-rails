@@ -1,0 +1,4 @@
+<% tag_relationships.each do |item_tag_relationship| %>
+  <% tag = item_tag_relationship.tag %>
+  <%= link_to "##{ tag.name }", [@organization, tag] %>
+<% end %>

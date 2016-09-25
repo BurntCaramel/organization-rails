@@ -4,8 +4,8 @@
 <header>
 <h1>#<%= @tag.name %></h1>
 <div class="actions">
-<p><%= link_to 'Edit', edit_organization_tag_path(@organization, @tag) %></p>
-<p><%= link_to 'Delete', [@organization, @tag], data: { confirm: 'Are you sure you want to delete this tag?' }, method: :delete %></p>
+<h5><%= link_to 'Edit', edit_organization_tag_path(@organization, @tag) %></h5>
+<h5><%= link_to 'Delete', [@organization, @tag], data: { confirm: 'Are you sure you want to delete this tag?' }, method: :delete %></h5>
 </div>
 </header>
 
