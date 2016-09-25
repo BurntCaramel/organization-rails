@@ -19,14 +19,6 @@ class RecordsController < ApplicationController
     end
   end
 
-  def get_item_text(sha256)
-    begin
-      get_object("sha256/#{sha256}").body.string
-    rescue Aws::S3::Errors::NoSuchKey
-      nil
-    end
-  end
-
   private
     def set_tag
       @record_tag = @organization.record_tag

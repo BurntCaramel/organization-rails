@@ -1,0 +1,7 @@
+<figure class="nested">
+  <small><strong><%= render_item_link item %></strong></small>
+  <pre><%= render_item_text item %></pre>
+  <figcaption>
+  <%= render partial: 'shared/tag_relationships', object: get_item_tag_relationships(item) %> 
+  </figcaption>
+</figure>

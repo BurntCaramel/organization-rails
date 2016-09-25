@@ -1,0 +1,15 @@
+<%= render 'nav' %>
+
+<article>
+
+<% if @item.present? %>
+
+<section>
+<%= render partial: 'item', object: @item %>
+</section>
+
+<% else %>
+<h5><%= 'Item not found.' %></h5>
+<% end %>
+
+</article>

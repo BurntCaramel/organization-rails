@@ -1,6 +1,4 @@
-<%= render 'organizations/nav' do %>
-<h1>Texts</h1>
-<% end %>
+<%= render 'nav' %>
 
 <article>
 
@@ -14,15 +12,12 @@
 
 <section>
 <% @items.each do |item| %>
-  <figure class="nested">
-    <small><strong><%= item[:sha256] %></strong></small>
-    <pre><%= item[:text] %></pre>
-    <figcaption>
-    <%= render partial: 'shared/tag_relationships', object: item[:tag_relationships] %> 
-    </figcaption>
-  </figure>
+<%= render partial: 'item', object: item %>
 <% end %>
 </section>
+
+<div class="actions">
+</div>
 
 <% end %>
 

@@ -1,0 +1,7 @@
+<%= render 'organizations/nav' do %>
+  <% unless current_page? action: 'index' %>
+  <h3><%= link_to 'Texts', organization_texts_path(@organization) %></h3>
+  <% else %>
+  <h1>Texts</h1>
+  <% end %>
+<% end %>

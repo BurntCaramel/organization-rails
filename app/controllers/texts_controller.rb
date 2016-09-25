@@ -1,34 +1,30 @@
 class TextsController < ApplicationController
   include OrganizationsHelper
-  include S3Helper
+  include TextsHelper
 
   before_action :set_parent_organization
   before_action :set_s3_client
   before_action :set_tag
 
   def index
-    @item_relationships = @text_tag.item_relationships if @text_tag.present?
-
-    @items = @item_relationships.map do |item_relationship|
-      sha256 = item_relationship.item_sha_256
-      {
-        sha256: sha256,
-        tag_relationships: @organization.tag_relationships_for_item(sha256),
-        text: get_item_text(sha256)
-      }
-    end
+    @items = @item_relationships
   end
 
-  def get_item_text(sha256)
-    begin
-      get_object("sha256/#{sha256}").body.string
-    rescue Aws::S3::Errors::NoSuchKey
-      nil
-    end
+  def show
+    @item = @item_relationships.find_by(item_sha_256: params[:sha256])
+  end
+
+  def new
+  end
+
+  def create
+    body = request.body
+    sha256 = upload_item body
   end
 
   private
     def set_tag
       @text_tag = @organization.text_tag
+      @item_relationships = @text_tag.item_relationships if @text_tag.present?
     end
 end

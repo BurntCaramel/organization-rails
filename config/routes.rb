@@ -12,7 +12,7 @@ Rails.application.routes.draw do
     resources :tags
     resources :item_tag_relationships, only: [:create, :destroy]
 
-    resources :texts
+    resources :texts, except: [:update], param: :sha256
     resources :images
     resources :records
     resources :stories
