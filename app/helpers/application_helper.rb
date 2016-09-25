@@ -1,7 +1,6 @@
 module ApplicationHelper
-  def site_title
-    'Royal Icing'
-  end
+  SITE_TITLE = 'Royal Icing'
+  TITLE_TAGLINE = 'Content-first UX tools'
 
   def page_title
     components = []
@@ -10,7 +9,9 @@ module ApplicationHelper
       components << "@#{ @organization.name }"
     end
 
-    components << site_title
+    components << SITE_TITLE
+
+    components << TITLE_TAGLINE if current_page? controller: :dashboard
 
     components.join(' · ')
   end
