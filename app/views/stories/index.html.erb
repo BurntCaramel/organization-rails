@@ -24,17 +24,30 @@
 
 </article>
 
+<script>
+window.promiseCollectedImageURL = function(options) {
+  var sha256 = options.sha256;
+  var urlPlaceholder = "<%= imgix_organization_image_url(@organization, sha256: '__SHA256__') %>";
+  return $.ajax({
+    url: urlPlaceholder.replace('__SHA256__', sha256),
+    data: options,
+    dataType: 'html'
+  })
+  .then(function(result) {
+    return { html: result };
+  });
+}
+</script>
+
 <div class="flambe-app" data-destination="bootstrap">
 <div class="flambe-app-content">
-Just add hashtags #primary
+Make any file only a click away #primary
 
-Create rich layouts just by typing #image #unsplash: dessert
+Quickly open your most important files. #image #collected: 461e2b1aa6c7bea5361e323eca1c457656caf9f97a2343541d07cdcb83a3eb20 #width: 200
 
-Create fields #field
-And Buttons #button #primary
-Big and Small #button #small
+Organization for professionals of all sorts. #image #unsplash: macbook
 
-Features #link: @links.features
+Free on the Mac App Store #cta #primary #link: @links.macAppStore
 
 @legal #small
 </div>
@@ -45,7 +58,7 @@ Features #link: @links.features
 		"type": "json",
 		"variations": [
 			{
-				"rawContent": "{\"features\": \"https://icing.space/features\"}"
+				"rawContent": "{\"macAppStore\": \"https://itunes.apple.com/us/app/blik/id955293604?mt=12\"}"
 			}
 		]
 	},
@@ -54,7 +67,7 @@ Features #link: @links.features
 		"type": "text",
 		"variations": [
 			{
-				"rawContent": "Copyright Company Inc. 2016"
+				"rawContent": "Copyright Patrick Smith. 2016"
 			}
 		]
 	}

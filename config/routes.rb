@@ -13,9 +13,13 @@ Rails.application.routes.draw do
     resources :item_tag_relationships, only: [:create, :destroy]
 
     resources :texts, except: [:update], param: :sha256
-    resources :images, except: [:update], param: :sha256
+    resources :images, except: [:update], param: :sha256 do
+      member do
+        get 'imgix'
+      end
+    end
     resources :records, except: [:update], param: :sha256
-    
+
     resources :stories
 
     resources :s3_credentials

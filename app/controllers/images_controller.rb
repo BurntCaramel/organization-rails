@@ -17,6 +17,15 @@ class ImagesController < ApplicationController
     @max_width = 550
   end
 
+  def imgix
+    @sha256 = params.fetch(:sha256)
+    @width = params.fetch(:width, 1000)
+    @height = params.fetch(:height, 1000)
+
+    # Works for both html and json formats
+    render layout: nil
+  end
+
   private
     def set_tag
       @image_tag = @organization.image_tag

@@ -17,6 +17,15 @@ module ImagesHelper
     image_tag(url1x, srcset: srcset)
   end
 
+  def image_json(sha256, width, height)
+    url1x = @imgix.path("/#{ sha256 }").to_url(w: width, h: height, fit: 'max', auto: 'format')
+    url2x = @imgix.path("/#{ sha256 }").to_url(w: width, h: height, fit: 'max', dpr: 2, auto: 'format')
+    {
+      '1x': url1x,
+      '2x': url2x
+    }
+  end
+
   def render_image_item_link(item, options = {})
     max_width = options[:max_width] || IMAGE_MAX_WIDTH
     max_height = options[:max_height] || max_width
