@@ -12,12 +12,15 @@
 
 <section>
 <% @items.each do |item| %>
-<%= render partial: 'item', object: item %>
+  <%= render partial: 'item', object: item %>
 <% end %>
 </section>
 
-<div class="actions">
-</div>
+<nav class="actions">
+<p>
+<%= link_to 'New Text', new_organization_text_path(@organization) %>
+</p>
+</nav>
 
 <% end %>
 

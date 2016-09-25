@@ -1,7 +1,7 @@
 module TextsHelper
   include S3Helper
-
-  def render_item_link(item)
+  
+  def render_text_item_link(item)
     link_to item.item_sha_256, organization_text_path(@organization, sha256: item.item_sha_256)
   end
 

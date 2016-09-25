@@ -1,6 +1,5 @@
 <figure class="nested">
-  <small><strong><%= render_text_item_link item %></strong></small>
-  <pre><%= render_item_text item %></pre>
+  <%= render_image_item_link item, max_width: @max_width %>
   <figcaption>
   <%= render partial: 'shared/tag_relationships', object: get_item_tag_relationships(item) %> 
   </figcaption>

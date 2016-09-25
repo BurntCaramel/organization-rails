@@ -1,10 +1,11 @@
 class TextsController < ApplicationController
   include OrganizationsHelper
   include TextsHelper
+  include S3Helper
 
   before_action :set_parent_organization
-  before_action :set_s3_client
   before_action :set_tag
+  before_action :set_s3_client
 
   def index
     @items = @item_relationships

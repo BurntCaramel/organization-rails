@@ -1,10 +1,6 @@
-<%= render 'organizations/nav' %>
+<%= render 'nav' %>
 
 <article>
-
-<header>
-<h1>Images</h1>
-</header>
 
 <% if @item_relationships.nil? %>
 
@@ -16,12 +12,7 @@
 
 <section>
 <% @items.each do |item| %>
-  <figure class="nested">
-    <%= render_image item[:sha256] %>
-    <figcaption>
-    <%= render partial: 'shared/tag_relationships', object: item[:tag_relationships] %> 
-    </figcaption>
-  </figure>
+  <%= render partial: 'item', object: item %>
 <% end %>
 </section>
 
