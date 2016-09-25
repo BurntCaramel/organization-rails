@@ -6,6 +6,7 @@ class StoriesController < ApplicationController
 
   def index
     @item_relationships = @story_tag.item_relationships if @story_tag.present?
+    @script_flambe = true
   end
 
   private

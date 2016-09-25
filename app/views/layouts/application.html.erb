@@ -19,7 +19,12 @@
 <%= render 'layouts/flash' %>
 
 <%= yield %>
+
 </main>
+
+<% if @script_flambe %>
+<%= javascript_include_tag 'flambe', 'data-turbolinks-track': 'reload' %>
+<% end %>
 
 </body>
 </html>
