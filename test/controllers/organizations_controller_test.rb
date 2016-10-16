@@ -4,7 +4,8 @@ class OrganizationsControllerTest < ActionDispatch::IntegrationTest
   include DashboardHelper
 
   setup do
-    @organization = organizations(:one)
+    @ateam = organizations(:ateam)
+    @lanisters = organizations(:lanisters)
   end
 
   test "should redirect get index when logged out" do
@@ -20,30 +21,30 @@ class OrganizationsControllerTest < ActionDispatch::IntegrationTest
 
   # test "should create organization" do
   #   assert_difference('Organization.count') do
-  #     post organizations_url, params: { organization: { name: @organization.name, owner_identifier: @organization.owner_identifier } }
+  #     post organizations_url, params: { organization: { name: @ateam.name, owner_identifier: @ateam.owner_identifier } }
   #   end
 
   #   assert_redirected_to organization_url(Organization.last)
   # end
 
   # test "should show organization" do
-  #   get organization_url(@organization)
+  #   get organization_url(@ateam)
   #   assert_response :success
   # end
 
   # test "should get edit" do
-  #   get edit_organization_url(@organization)
+  #   get edit_organization_url(@ateam)
   #   assert_response :success
   # end
 
   # test "should update organization" do
-  #   patch organization_url(@organization), params: { organization: { name: @organization.name, owner_identifier: @organization.owner_identifier } }
-  #   assert_redirected_to organization_url(@organization)
+  #   patch organization_url(@ateam), params: { organization: { name: @ateam.name, owner_identifier: @ateam.owner_identifier } }
+  #   assert_redirected_to organization_url(@ateam)
   # end
 
   # test "should destroy organization" do
   #   assert_difference('Organization.count', -1) do
-  #     delete organization_url(@organization)
+  #     delete organization_url(@ateam)
   #   end
 
   #   assert_redirected_to organizations_url

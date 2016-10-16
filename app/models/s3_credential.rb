@@ -33,8 +33,8 @@ class S3Credential < ApplicationRecord
         return
       end
 
-      errors.add(:info, 'should contain "accessKeyID"') if info[:accessKeyID].nil?
-      errors.add(:info, 'should contain "secretAccessKey"') if info[:secretAccessKey].nil?
-      errors.add(:info, 'should contain "region"') if info[:region].nil?
+      errors.add(:info, 'should contain "accessKeyID"') if info['accessKeyID'].nil?
+      errors.add(:info, 'should contain "secretAccessKey"') if info['secretAccessKey'].nil?
+      errors.add(:info, 'should contain "region"') if info['region'].nil?
     end
 end

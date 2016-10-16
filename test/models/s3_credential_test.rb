@@ -15,15 +15,15 @@ class S3CredentialTest < ActiveSupport::TestCase
     assert_not cred.valid?
 
     cred.info = {
-      'accessKeyID': 'id',
-      'secretAccessKey': 'secret',
-      'region': 'region'
+      'accessKeyID' => 'id',
+      'secretAccessKey' => 'secret',
+      'region' => 'region'
     }
 
     assert cred.valid?
 
-    assert_equal cred.access_key_id, 'id'
-    assert_equal cred.secret_access_key, 'secret'
-    assert_equal cred.region, 'region'
+    assert_equal 'id', cred.access_key_id
+    assert_equal 'secret', cred.secret_access_key
+    assert_equal 'region', cred.region
   end
 end
