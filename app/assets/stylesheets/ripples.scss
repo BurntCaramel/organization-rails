@@ -1,0 +1,58 @@
+@import 'base';
+
+.ripple {
+  $dot-size: 7px;
+
+  @extend %space-below-2;
+
+  position: relative;
+
+  &_dot {
+    position: absolute;
+    top: 0.4rem;
+    left: -0.75rem;
+    border-radius: 50%;
+    background-color: white;
+
+    &-outer {
+      width: $dot-size;
+      height: $dot-size;
+    }
+    &-inner {
+      width: $dot-size;
+      height: $dot-size;
+      top: 2px;
+      left: 2px;
+      mix-blend-mode: difference;
+    }
+  }
+
+  &_name {
+    font-size: 1rem;
+    font-style: italic;
+  }
+
+  &_hash {
+    font-size: 0.5rem;
+  }
+
+  &_created-at {
+    position: absolute;
+    top: 0;
+    right: 0;
+    font-weight: normal;
+    opacity: 0.4;
+  }
+
+  .actions {
+    position: absolute;
+    top: 1.2rem;
+    right: 0;
+    opacity: 0.6;
+  }
+  &:hover {
+    .actions {
+      opacity: 1.0;
+    }
+  }
+}

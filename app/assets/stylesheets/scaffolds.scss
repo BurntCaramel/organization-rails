@@ -71,18 +71,6 @@ header {
   //padding-top: 1rem;
   margin-bottom: 1rem;
 
-  .actions {
-    display: flex;
-
-    > * {
-      margin-right: 0.75em;
-    }
-
-    a {
-      @extend %link--normal;
-    }
-  }
-
   p {
     font-size: 0.75rem;
   }
@@ -155,6 +143,18 @@ form {
     border: none;
   }
 }
+
+.actions {
+    display: flex;
+
+    > * {
+      margin-right: 0.75em;
+    }
+
+    a {
+      @extend %link--normal;
+    }
+  }
 
 .field, .actions {
   margin-bottom: 10px;

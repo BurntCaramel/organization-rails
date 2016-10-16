@@ -1,4 +1,8 @@
 Rails.application.routes.draw do
+  get 'ripples/create'
+
+  get 'ripples/destroy'
+
   root to: 'dashboard#index'
 
   get '/auth/auth0/callback' => 'auth0#callback'
@@ -9,8 +13,14 @@ Rails.application.routes.draw do
   end
 
   resources :organizations do
-    resources :channels
-    
+    resources :channels do
+      resources :ripples, only: [:create, :destroy] do
+        collection do
+          resources :keys, only: [:show], param: :key_base64, controller: :ripples, action: :index
+        end
+      end
+    end
+
     resources :tags
     resources :item_tag_relationships, only: [:create, :destroy]
 

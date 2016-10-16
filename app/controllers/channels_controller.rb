@@ -9,7 +9,8 @@ class ChannelsController < ApplicationController
   end
 
   def show
-    @ripples = @channel.ripples
+    @ripples = @channel.ripples.all # .all omits new record created below
+    @new_ripple = @channel.ripples.build(info: {})
   end
 
   def new

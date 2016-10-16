@@ -3,6 +3,8 @@ $background-color: #111; // #211;
 $link-color: #f82484;
 $link-color--hover: #eee;
 
+$section-color: #666;
+
 $kind-text-color:rgb(247, 203, 71);
 $kind-image-color: rgb(15, 177, 231);
 $kind-record-color: rgb(242, 64, 64);
@@ -44,7 +46,11 @@ $nested-kind-opacity: 0.16;
 
 %action-area {
   padding: 0.333em 0.444em;
+  background-color: rgba($section-color, 0.075);
+}
+%action-area--active {
   background-color: rgba($link-color, 0.075);
+  cursor: pointer;
 }
 %action-area--hover {
   background-color: rgba($link-color--hover, 0.07);
@@ -64,6 +70,7 @@ $nested-kind-opacity: 0.16;
 %button {
   @extend %link;
   @extend %action-area;
+  @extend %action-area--active;
 
   display: inline-block;
   border: none;
@@ -79,4 +86,7 @@ $nested-kind-opacity: 0.16;
 }
 %space-below {
   margin-bottom: 0.444rem;
+}
+%space-below-2 {
+  margin-bottom: 1rem;
 }

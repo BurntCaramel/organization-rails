@@ -1,0 +1,17 @@
+<%= form_for([@organization, @channel, ripple]) do |f| %>
+
+<div class="field">
+  <%= f.label :name %>
+  <%= f.text_field :name %>
+</div>
+
+<div class="field">
+  <%= f.label :item_sha256, 'Item SHA256' %>
+  <%= f.text_field :item_sha256 %>
+</div>
+
+<div class="actions">
+  <%= f.submit 'Post' %>
+</div>
+
+<% end %>

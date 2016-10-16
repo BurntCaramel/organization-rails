@@ -1,6 +1,6 @@
 <%= render 'nav' %>
 
-<article>
+<article class="channel">
 <header>
 <h1>!<%= @channel.name %></h1>
 <div class="actions">
@@ -9,18 +9,14 @@
 </div>
 </header>
 
+<section class="channel_post-ripple">
+<%= render 'ripples/form', ripple: @new_ripple %>
+</section>
+
 <section class="nested">
-<p><%= pluralize(count_relation(@ripples), 'ripple') %></p>
-<ul class="ripples">
+<div class="ripples">
 <%= render @ripples %>
-</ul>
+</div>
 </section>
 
-<section class="nested">
-<%#= render 'item-form', item_tag_relationship: @new_item_relationship %>
-</section>
-
-<nav>
-<p><%= link_to 'Back to Channels', organization_channels_path(@organization) %></p>
-</nav>
 </article>

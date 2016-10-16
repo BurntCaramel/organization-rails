@@ -1,0 +1,12 @@
+<%= render 'channels/nav' %>
+
+<section>
+
+<header>
+<%= link_to "!#{ @channel.name }", [@organization, @channel] %>
+</header>
+
+<div class="ripples">
+<%= render @ripples %>
+</div>
+</section>
