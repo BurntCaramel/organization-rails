@@ -10,7 +10,14 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160908072942) do
+ActiveRecord::Schema.define(version: 20161016082137) do
+
+  create_table "channels", force: :cascade do |t|
+    t.integer  "organization_id", null: false
+    t.datetime "created_at",      null: false
+    t.datetime "updated_at",      null: false
+    t.index ["organization_id"], name: "index_channels_on_organization_id"
+  end
 
   create_table "item_tag_relationships", force: :cascade do |t|
     t.integer  "tag_id",       null: false
@@ -29,6 +36,17 @@ ActiveRecord::Schema.define(version: 20160908072942) do
     t.datetime "updated_at",       null: false
     t.index ["name"], name: "index_organizations_on_name", unique: true
     t.index ["owner_identifier"], name: "index_organizations_on_owner_identifier"
+  end
+
+  create_table "ripples", force: :cascade do |t|
+    t.integer  "channel_id",            null: false
+    t.binary   "key_id",     limit: 16, null: false
+    t.binary   "info",                  null: false
+    t.datetime "created_at",            null: false
+    t.datetime "updated_at",            null: false
+    t.index ["channel_id", "created_at"], name: "index_ripples_on_channel_id_and_created_at"
+    t.index ["channel_id", "key_id", "created_at"], name: "index_ripples_on_channel_id_and_key_id_and_created_at", unique: true
+    t.index ["channel_id"], name: "index_ripples_on_channel_id"
   end
 
   create_table "s3_credentials", force: :cascade do |t|

@@ -1,0 +1,32 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+a1:
+  channel: one
+  key_id: "86ABE6C65C069418"
+  info: <%= JSON.dump({ 'kind' => 'text' }) %>
+  created_at: <%= 10.hours.ago %>
+
+b1:
+  channel: one
+  key_id: "9BB074D865CDE396"
+  info: <%= JSON.dump({ 'kind' => 'image' }) %>
+  created_at: <%= 9.hours.ago %>
+
+a2:
+  channel: one
+  key_id: "86ABE6C65C069418"
+  info: <%= JSON.dump({}) %>
+  created_at: <%= 8.hours.ago %>
+
+a3:
+  channel: one
+  key_id: "86ABE6C65C069418"
+  info: <%= JSON.dump({}) %>
+  created_at: <%= 7.hours.ago %>
+
+x1:
+  channel: two
+  key_id: "86ABE6C65C069418"
+  info: <%= JSON.dump({}) %>
+  created_at: <%= 8.hours.ago %>
+
