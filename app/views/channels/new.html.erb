@@ -1,0 +1,14 @@
+<article>
+<header>
+<h1>New Channel</h1>
+</header>
+
+<section>
+<%= render 'form', channel: @channel %>
+</section>
+
+<nav>
+<%= link_to 'Back to Channels', organization_channels_path(@organization) %>
+</nav>
+
+</article>

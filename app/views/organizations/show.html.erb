@@ -5,6 +5,15 @@
 </header>
 
 <h2>
+<%= link_to 'Channels', organization_channels_path(@organization) %>
+</h2>
+<!--<h2>
+<%= link_to 'Showcases', organization_stories_path(@organization) %>
+</h2>-->
+
+<hr>
+
+<h2>
 <%= link_to 'Texts', organization_texts_path(@organization) %>
 </h2>
 <h2>
@@ -18,9 +27,6 @@
 
 <h2>
 <%= link_to 'Stories', organization_stories_path(@organization) %>
-</h2>
-<h2>
-<%= link_to 'Showcases', organization_stories_path(@organization) %>
 </h2>
 <h2>
 <%= link_to 'Units', organization_stories_path(@organization) %>

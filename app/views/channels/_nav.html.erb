@@ -1,0 +1,7 @@
+<%= render 'organizations/nav' do %>
+  <% if @channel.present? %>
+  <h3><%= link_to 'Channels', organization_channels_path(@organization) %></h3>
+  <% else %>
+  <h1>Channels</h1>
+  <% end %>
+<% end %>

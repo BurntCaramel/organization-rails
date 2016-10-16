@@ -1,0 +1,21 @@
+<%= render 'nav' %>
+
+<article>
+
+<section>
+<% @channels.each do |channel| %>
+  <article class="channel">
+    <h2>
+    <%= link_to "!#{channel.name}", [@organization, channel] %>
+    </h2>
+  </article>
+<% end %>
+</section>
+
+<nav>
+<p>
+<%= link_to 'New Channel', new_organization_channel_path(@organization) %>
+</p>
+</nav>
+
+</article>

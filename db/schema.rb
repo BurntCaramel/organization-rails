@@ -10,12 +10,14 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20161016082137) do
+ActiveRecord::Schema.define(version: 20161016111519) do
 
   create_table "channels", force: :cascade do |t|
     t.integer  "organization_id", null: false
     t.datetime "created_at",      null: false
     t.datetime "updated_at",      null: false
+    t.string   "name",            null: false
+    t.index ["organization_id", "name"], name: "index_channels_on_organization_id_and_name", unique: true
     t.index ["organization_id"], name: "index_channels_on_organization_id"
   end
 

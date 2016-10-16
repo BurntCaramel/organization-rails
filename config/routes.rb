@@ -9,6 +9,8 @@ Rails.application.routes.draw do
   end
 
   resources :organizations do
+    resources :channels
+    
     resources :tags
     resources :item_tag_relationships, only: [:create, :destroy]
 
