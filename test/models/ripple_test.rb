@@ -47,7 +47,10 @@ class RippleTest < ActiveSupport::TestCase
     }
     a4 = a3.succeed_with(new_info)
     assert_equal a3.key_id, a4.key_id
-    assert_equal new_info, a4.info
+    assert_equal({
+      'delete' => true,
+      'name' => 'NAME'
+    }, a4.info)
     assert a4.deleted?
     assert a4.validate!
   end

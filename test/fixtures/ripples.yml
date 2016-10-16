@@ -3,13 +3,13 @@
 a1:
   channel: one
   key_id: "86ABE6C65C069418"
-  info: <%= JSON.dump({ 'kind' => 'text' }) %>
+  info: <%= JSON.dump({ 'kind' => 'text' }).inspect %>
   created_at: <%= 10.hours.ago %>
 
 b1:
   channel: one
   key_id: "9BB074D865CDE396"
-  info: <%= JSON.dump({ 'kind' => 'image' }) %>
+  info: <%= JSON.dump({ 'kind' => 'image' }).inspect %>
   created_at: <%= 9.hours.ago %>
 
 a2:
@@ -21,7 +21,7 @@ a2:
 a3:
   channel: one
   key_id: "86ABE6C65C069418"
-  info: <%= JSON.dump({}) %>
+  info: <%= JSON.dump({ 'name' => 'NAME' }).inspect %>
   created_at: <%= 7.hours.ago %>
 
 x1:

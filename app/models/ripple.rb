@@ -28,9 +28,12 @@ class Ripple < ApplicationRecord
     info.fetch('delete', false)
   end
 
-  def succeed_with(info)
+  def succeed_with(new_info)
     copy = self.dup
-    copy.info = info
+
+    base_info = self.info.slice('name')
+    copy.info = base_info.merge(new_info)
+
     copy
   end
 
