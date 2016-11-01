@@ -15,7 +15,7 @@
   <% end %>
 <% end %>
 
-<%= link_to link_contents, organization_channel_key_path(@organization, @channel, ripple.key_base64) %>
+<%= link_to link_contents, organization_channel_key_path(@organization, @channel, ripple.key_base64), class: 'ripple_key-link' %>
 
 <% unless ripple.deleted? %>
 <h5 class="ripple_hash"><%= ripple.item_sha256 %></h5>

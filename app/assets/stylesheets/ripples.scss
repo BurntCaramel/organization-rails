@@ -7,6 +7,12 @@
 
   position: relative;
 
+  &_key-link {
+    display: block;
+    position: relative;
+    text-decoration: none;
+  }
+
   &_dot {
     position: absolute;
     top: 0.4rem;
