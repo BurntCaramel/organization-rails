@@ -11,6 +11,6 @@ class Tag < ApplicationRecord
 
     # Ensure name is all-lowercase
     def downcase_name
-      self.name = name.downcase
+      self.name = self.name.downcase
     end
 end
