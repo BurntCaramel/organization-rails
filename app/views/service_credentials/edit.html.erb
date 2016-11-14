@@ -1,0 +1,13 @@
+<%= render 'nav' %>
+
+<article>
+
+<header>
+<h1>Edit <%= @service_credential.kind_display %></h1>
+</header>
+
+<section>
+<%= render 'form', service_credential: @service_credential %>
+</section>
+
+</article>

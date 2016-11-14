@@ -1,0 +1,7 @@
+<%= render 'organizations/nav' do %>
+  <% if @service_credential.present? %>
+  <h3><%= link_to 'Service Credentials', organization_service_credentials_path(@organization) %></h3>
+  <% else %>
+  <h1><%= 'Service Credentials' %></h1>
+  <% end %>
+<% end %>

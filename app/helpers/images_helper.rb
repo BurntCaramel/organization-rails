@@ -1,10 +1,16 @@
 module ImagesHelper
   IMAGE_MAX_WIDTH = 200
-  # FIXME: get from database
-  IMGIX_HOST = 's-royalicing-test.imgix.net'
 
   def setup_imgix
-    @imgix = Imgix::Client.new(host: IMGIX_HOST)
+    imgix_credential = @organization.service_credentials.imgix
+    if imgix_credential.nil?
+      redirect_to @organization, alert: 'You must add Imgix credentials first'
+      return
+    end
+
+    info = imgix_credential.info
+
+    @imgix = Imgix::Client.new(host: info['host'])
   end
 
   def render_image(sha256, width, height)

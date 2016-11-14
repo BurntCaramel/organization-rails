@@ -1,6 +1,6 @@
 require 'test_helper'
 
-class S3CredentialsControllerTest < ActionDispatch::IntegrationTest
+class ServiceCredentialsControllerTest < ActionDispatch::IntegrationTest
   # test "the truth" do
   #   assert true
   # end

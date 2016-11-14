@@ -4,18 +4,20 @@ module S3Helper
   include DigestHelper
 
   def set_s3_client
-    s3_credential = @organization.s3_credentials.first
+    s3_credential = @organization.service_credentials.s3_access
     if s3_credential.nil?
       redirect_to @organization, alert: 'You must add S3 credentials first'
       return
     end
 
+    info = s3_credential.info
+
     Aws.config.update({
-      region: s3_credential.region,
-      credentials: Aws::Credentials.new(s3_credential.access_key_id, s3_credential.secret_access_key)
+      region: info.fetch('region'),
+      credentials: Aws::Credentials.new(info.fetch('accessKeyID'), info.fetch('secretAccessKey'))
     })
 
-    @s3 = Aws::S3::Client.new(region: s3_credential.region)
+    @s3 = Aws::S3::Client.new(region: info.fetch('region'))
     @bucket = 'organization-test'
   end
 

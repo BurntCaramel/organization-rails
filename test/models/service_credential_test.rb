@@ -1,12 +1,12 @@
 require 'test_helper'
 
-class S3CredentialTest < ActiveSupport::TestCase
+class ServiceCredentialTest < ActiveSupport::TestCase
   def setup
     @organization = Organization.new
   end
 
-  test "s3 credentials should validate" do
-    cred = S3Credential.new
+  test "service credentials should validate" do
+    cred = ServiceCredential.new
 
     assert_not cred.valid?
 

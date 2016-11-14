@@ -6,7 +6,7 @@ STORY_TAG = 'story'
 class Organization < ApplicationRecord
   has_many :tags, dependent: :destroy
   has_many :channels, dependent: :destroy
-  has_many :s3_credentials, dependent: :destroy
+  has_many :service_credentials, dependent: :destroy
   has_many :item_tag_relationships, through: :tags, source: :item_relationships
 
   # Validation

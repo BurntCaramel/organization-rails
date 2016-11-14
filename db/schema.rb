@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20161016111519) do
+ActiveRecord::Schema.define(version: 20161113123834) do
 
   create_table "channels", force: :cascade do |t|
     t.integer  "organization_id", null: false
@@ -51,13 +51,15 @@ ActiveRecord::Schema.define(version: 20161016111519) do
     t.index ["channel_id"], name: "index_ripples_on_channel_id"
   end
 
-  create_table "s3_credentials", force: :cascade do |t|
+  create_table "service_credentials", force: :cascade do |t|
     t.integer  "organization_id",   null: false
     t.binary   "encrypted_info",    null: false
     t.binary   "encrypted_info_iv", null: false
     t.datetime "created_at",        null: false
     t.datetime "updated_at",        null: false
-    t.index ["organization_id"], name: "index_s3_credentials_on_organization_id"
+    t.string   "kind",              null: false
+    t.index ["organization_id", "kind"], name: "index_service_credentials_on_organization_id_and_kind", unique: true
+    t.index ["organization_id"], name: "index_service_credentials_on_organization_id"
   end
 
   create_table "tags", force: :cascade do |t|

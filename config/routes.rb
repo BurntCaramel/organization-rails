@@ -37,7 +37,7 @@ Rails.application.routes.draw do
 
     resources :stories
 
-    resources :s3_credentials
+    resources :service_credentials, id: /[A-Za-z0-9\.]+?/, format: /json/
   end
 
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html

@@ -1,0 +1,13 @@
+<%= render 'nav' %>
+
+<article>
+
+<section>
+<% @kinds.each do |kind| %>
+  <article>
+    <h2><%= link_to "#{ServiceCredential.title_for_kind(kind)}", edit_organization_service_credential_path(@organization, kind) %></h2>
+  </article>
+<% end %>
+</section>
+
+</article>

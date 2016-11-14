@@ -8,6 +8,7 @@ class RecordsController < ApplicationController
 
   def index
     @item_relationships = @record_tag.item_relationships if @record_tag.present?
+    return if @item_relationships.nil?
 
     @items = @item_relationships.map do |item_relationship|
       sha256 = item_relationship.item_sha_256

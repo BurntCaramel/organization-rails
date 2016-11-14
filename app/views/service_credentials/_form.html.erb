@@ -1,0 +1,26 @@
+<%= form_for :service_credential, url: organization_service_credential_path(@organization, service_credential.kind), method: :put do |f| %>
+  <% if service_credential.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(service_credential.errors.count, "error") %> prohibited this S3 Credential from being saved:</h2>
+
+      <ul>
+      <% service_credential.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <%= f.fields_for :info, service_credential.info_proxy do |info_fields| %>
+    <% service_credential.info_keys.each do |key| %>
+      <div class="field">
+        <%= info_fields.label key.titleize %>
+        <%= info_fields.text_field key %>
+      </div>
+    <% end %>
+  <% end %> 
+
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>
