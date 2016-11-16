@@ -18,7 +18,7 @@ module S3Helper
     })
 
     @s3 = Aws::S3::Client.new(region: info.fetch('region'))
-    @bucket = 'organization-test'
+    @bucket = info.fetch('bucket', 'organization-test')
   end
 
   ## Convenience
@@ -43,7 +43,7 @@ module S3Helper
 
   private
 
-     def get_object(key)
+    def get_object(key)
       @s3.get_object(
         bucket: @bucket,
         key: key

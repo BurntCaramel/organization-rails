@@ -7,11 +7,13 @@ class ItemTagRelationshipsController < ApplicationController
     @tag = @organization.tags.find(params[:tag_id])
     @relationship = @tag.item_relationships.build(item_tag_relationship_params)
 
+    destination = request.referrer || [@tag.organization, @tag]
+
     respond_to do |format|
       begin
         @relationship.save!
         format.html {
-          redirect_to [@tag.organization, @tag],
+          redirect_to destination,
           notice: 'Item was successfully tagged.'
         }
         format.json {
@@ -23,7 +25,7 @@ class ItemTagRelationshipsController < ApplicationController
         }
       rescue ActiveRecord::RecordNotUnique => e
         format.html {
-          redirect_to [@tag.organization, @tag],
+          redirect_to destination,
           alert: "Item has already been tagged ##{@tag.name}."
         }
         format.json {

@@ -31,20 +31,31 @@
 <h2>
 <%= link_to 'Units', organization_stories_path(@organization) %>
 </h2>
+
+<hr>
+
 <h2>
 <%= link_to 'Recipes', organization_stories_path(@organization) %>
+</h2>
+<h2>
+<%= link_to 'Tags', organization_tags_path(@organization) %>
 </h2>
 
 <hr>
 
 <h3>
-<%= link_to 'Tags', organization_tags_path(@organization) %>
+<%= link_to 'Roles', edit_organization_path(@organization) %>
+·
+<%= link_to 'Invite', edit_organization_path(@organization) %>
 </h3>
+
+<hr>
+
 <h3>
 <%= link_to 'Service Credentials', organization_service_credentials_path(@organization) %>
 </h3>
 <h3>
-<%= link_to 'Organization', edit_organization_path(@organization) %>
+<%= link_to 'Organization Settings', edit_organization_path(@organization) %>
 </h3>
 
 </article>

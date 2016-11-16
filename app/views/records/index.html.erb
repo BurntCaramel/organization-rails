@@ -1,8 +1,10 @@
-<%= render 'organizations/nav' do %>
-<h1>Records</h1>
-<% end %>
+<%= render 'nav' %>
 
 <article>
+
+<section class="nested">
+<%= render 'tags/item_form', item_tag_relationship: @new_item_relationship %>
+</section>
 
 <% if @item_relationships.nil? %>
 
@@ -13,15 +15,7 @@
 <p><%= pluralize(@item_relationships.count, 'record') %> tagged</p>
 
 <section>
-<% @items.each do |item| %>
-  <figure class="nested">
-    <small><strong><%= item[:sha256] %></strong></small>
-    <pre><%= item[:text] %></pre>
-    <figcaption>
-    <%= render partial: 'shared/tag_relationships', object: item[:tag_relationships] %> 
-    </figcaption>
-  </figure>
-<% end %>
+<%= render partial: 'item', collection: @items, locals: { nested: true } %>
 </section>
 
 <% end %>

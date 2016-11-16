@@ -11,7 +11,7 @@
     </div>
   <% end %>
 
-  <%= hidden_field_tag :tag_id, @tag.id %>
+  <%= hidden_field_tag :tag_id, item_tag_relationship.tag.id %>
 
   <div class="field">
     <%= f.label :item_sha_256, 'SHA256' %>

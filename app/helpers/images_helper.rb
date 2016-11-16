@@ -10,7 +10,7 @@ module ImagesHelper
 
     info = imgix_credential.info
 
-    @imgix = Imgix::Client.new(host: info['host'])
+    @imgix = Imgix::Client.new(host: info.fetch('host'))
   end
 
   def render_image(sha256, width, height)
@@ -35,10 +35,6 @@ module ImagesHelper
   def render_image_item_link(item, options = {})
     max_width = options[:max_width] || IMAGE_MAX_WIDTH
     max_height = options[:max_height] || max_width
-    link_to render_image(item.item_sha_256, max_width, max_height), organization_image_path(@organization, sha256: item.item_sha_256)
-  end
-
-  def get_item_tag_relationships(item)
-    @organization.tag_relationships_for_item(item.item_sha_256)
+    link_to render_image(item.sha256, max_width, max_height), organization_image_path(item.organization, item)
   end
 end

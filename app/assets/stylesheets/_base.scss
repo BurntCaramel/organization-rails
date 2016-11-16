@@ -90,3 +90,36 @@ $nested-kind-opacity: 0.16;
 %space-below-2 {
   margin-bottom: 1rem;
 }
+
+%row {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+}
+
+%horizontal-form {
+  @extend %row;
+
+  .field {
+    flex-shrink: 1;
+    flex-grow: 1;
+    margin: 0;
+    margin-right: 1rem;
+
+    input {
+      width: 100%;
+      font-size: 0.75rem;
+    }
+  }
+
+  .actions {
+      flex-grow: 1;
+      margin: 0;
+
+      input {
+        display: block;
+        width: 100%;
+        margin: 0;
+      }
+    }
+}

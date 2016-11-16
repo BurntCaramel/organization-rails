@@ -1,6 +1,8 @@
-<figure class="nested">
+<% figure_class = local_assigns.fetch(:nested, false) ? 'nested' : nil %>
+
+<%= content_tag :figure, class: figure_class do %>
   <%= render_image_item_link item, max_width: @max_width %>
   <figcaption>
-  <%= render partial: 'shared/tag_relationships', object: get_item_tag_relationships(item) %> 
+  <%= render partial: 'shared/tag_relationships', object: item.tag_relationships %> 
   </figcaption>
-</figure>
+<% end %>

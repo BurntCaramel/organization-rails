@@ -22,7 +22,7 @@ class TagsController < ApplicationController
   end
 
   def new
-    @tag = @organization.tags.build
+    @tag = @organization.tags.build(name: params[:name])
   end
 
   def create

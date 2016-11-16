@@ -2,6 +2,10 @@
 
 <article>
 
+<section class="nested">
+<%= render 'tags/item_form', item_tag_relationship: @new_item_relationship %>
+</section>
+
 <% if @item_relationships.nil? %>
 
 <p>Tag items #text for them to appear here.</p>
@@ -11,16 +15,8 @@
 <p><%= pluralize(@item_relationships.count, 'text') %> tagged</p>
 
 <section>
-<% @items.each do |item| %>
-  <%= render partial: 'item', object: item %>
-<% end %>
+<%= render partial: 'item', collection: @items, locals: { nested: true } %>
 </section>
-
-<nav class="actions">
-<p>
-<%= link_to 'New Text', new_organization_text_path(@organization) %>
-</p>
-</nav>
 
 <% end %>
 

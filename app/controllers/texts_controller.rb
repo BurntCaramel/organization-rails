@@ -1,18 +1,17 @@
 class TextsController < ApplicationController
+  include AssetsControllerConcern
   include OrganizationsHelper
-  include TextsHelper
-  include S3Helper
 
   before_action :set_parent_organization
   before_action :set_tag
-  before_action :set_s3_client
+  before_action :set_item_relationships
+  before_action :set_item_relationship, only: [:show]
+  before_action :set_new_item_relationship, only: [:index, :create]
 
   def index
-    @items = @item_relationships
   end
 
   def show
-    @item = @item_relationships.find_by(item_sha_256: params[:sha256])
   end
 
   def new
@@ -20,12 +19,13 @@ class TextsController < ApplicationController
 
   def create
     body = request.body
-    sha256 = upload_item body
+    content = body.read
+    @new_item_relationship.item_sha_256 = upload_item body
+    @new_item_relationship.save
   end
 
   private
     def set_tag
-      @text_tag = @organization.text_tag
-      @item_relationships = @text_tag.item_relationships if @text_tag.present?
+      @tag = @organization.text_tag
     end
 end

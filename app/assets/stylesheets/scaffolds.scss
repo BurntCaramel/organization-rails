@@ -97,7 +97,7 @@ article {
     font-size: 1.5rem;
     line-height: 1.2;
   }
-  h3 {
+  h3, h2 > small {
     @extend %space-below;
     
     font-size: 1.2rem;

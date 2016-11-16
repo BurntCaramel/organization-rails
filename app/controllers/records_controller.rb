@@ -1,27 +1,21 @@
 class RecordsController < ApplicationController
+  include AssetsControllerConcern
   include OrganizationsHelper
-  include S3Helper
 
   before_action :set_parent_organization
-  before_action :set_s3_client
   before_action :set_tag
+  before_action :set_item_relationships
+  before_action :set_item_relationship, only: [:show]
+  before_action :set_new_item_relationship, only: [:index, :create]
 
   def index
-    @item_relationships = @record_tag.item_relationships if @record_tag.present?
-    return if @item_relationships.nil?
+  end
 
-    @items = @item_relationships.map do |item_relationship|
-      sha256 = item_relationship.item_sha_256
-      {
-        sha256: sha256,
-        tag_relationships: @organization.tag_relationships_for_item(sha256),
-        text: get_item_text(sha256)
-      }
-    end
+  def show
   end
 
   private
     def set_tag
-      @record_tag = @organization.record_tag
+      @tag = @organization.record_tag
     end
 end

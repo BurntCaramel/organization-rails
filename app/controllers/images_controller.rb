@@ -1,19 +1,22 @@
 class ImagesController < ApplicationController
+  include AssetsControllerConcern
   include OrganizationsHelper
   include ImagesHelper
   include S3Helper
 
   before_action :set_parent_organization
   before_action :set_tag
+  before_action :set_item_relationships
+  before_action :set_item_relationship, only: [:show]
+  before_action :set_new_item_relationship, only: [:index, :create]
   before_action :setup_imgix
+  before_action :set_s3_client, only: [:create]
 
   def index
-    @items = @item_relationships
     @max_width = 200
   end
 
   def show
-    @item = @item_relationships.find_by(item_sha_256: params[:sha256])
     @max_width = 550
   end
 
@@ -26,9 +29,14 @@ class ImagesController < ApplicationController
     render layout: nil
   end
 
+  def create
+    body = request.body
+    content = body.read
+    upload_item content
+  end
+
   private
     def set_tag
-      @image_tag = @organization.image_tag
-      @item_relationships = @image_tag.item_relationships if @image_tag.present?
+      @tag = @organization.image_tag
     end
 end

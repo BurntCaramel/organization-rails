@@ -5,3 +5,7 @@
     @extend %link--tintable;
   }
 }
+
+.new_item_tag_relationship {
+  @extend %horizontal-form;
+}

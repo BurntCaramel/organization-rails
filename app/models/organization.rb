@@ -11,7 +11,9 @@ class Organization < ApplicationRecord
 
   # Validation
   validates :owner_identifier, presence: true
+end
 
+class Organization
   def tag_relationships_for_item(item_sha_256)
     #item_tag_relationships = ItemTagRelationship.joins(:tag).where('tag.organization = ?', self)
     item_tag_relationships.where(item_sha_256: item_sha_256).includes(:tag)
@@ -36,5 +38,11 @@ class Organization < ApplicationRecord
 
   def story_tag
     tags.find_by name: STORY_TAG
+  end
+end
+
+class Organization
+  def s3_client
+    @s3_client ||= OrganizationS3Client.new(self)
   end
 end
