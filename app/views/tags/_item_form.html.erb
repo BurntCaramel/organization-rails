@@ -1,4 +1,6 @@
 <%= form_for([@organization, item_tag_relationship]) do |f| %>
+  <% tag = item_tag_relationship.tag %>
+
   <% if item_tag_relationship.errors.any? %>
     <div id="error_explanation">
       <h2><%= pluralize(item_tag_relationship.errors.count, "error") %> prohibited this relationship from being saved:</h2>
@@ -11,7 +13,7 @@
     </div>
   <% end %>
 
-  <%= hidden_field_tag :tag_id, item_tag_relationship.tag.id %>
+  <%= hidden_field_tag :tag_id, tag.id %>
 
   <div class="field">
     <%= f.label :item_sha_256, 'SHA256' %>
@@ -19,6 +21,6 @@
   </div>
 
   <div class="actions">
-    <%= f.submit 'Tag item' %>
+    <%= f.submit "Add ##{ tag.name }" %>
   </div>
 <% end %>
