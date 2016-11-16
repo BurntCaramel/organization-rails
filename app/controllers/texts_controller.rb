@@ -8,6 +8,10 @@ class TextsController < ApplicationController
   before_action :set_item_relationship, only: [:show]
   before_action :set_new_item_relationship, only: [:index, :create]
 
+  def tag_name
+    TEXT_TAG
+  end
+
   def index
   end
 
@@ -23,9 +27,4 @@ class TextsController < ApplicationController
     @new_item_relationship.item_sha_256 = upload_item body
     @new_item_relationship.save
   end
-
-  private
-    def set_tag
-      @tag = @organization.text_tag
-    end
 end

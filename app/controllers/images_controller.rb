@@ -12,6 +12,10 @@ class ImagesController < ApplicationController
   before_action :setup_imgix
   before_action :set_s3_client, only: [:create]
 
+  def tag_name
+    IMAGE_TAG
+  end
+
   def index
     @max_width = 200
   end
@@ -34,9 +38,4 @@ class ImagesController < ApplicationController
     content = body.read
     upload_item content
   end
-
-  private
-    def set_tag
-      @tag = @organization.image_tag
-    end
 end

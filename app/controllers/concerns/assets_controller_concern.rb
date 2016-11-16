@@ -1,9 +1,13 @@
 module AssetsControllerConcern
   extend ActiveSupport::Concern
 
+  def set_tag
+    @tag = @organization.tags.find_by name: tag_name
+  end
+
   def set_item_relationships
     if @tag.nil?
-      redirect_to new_organization_tag_path(@organization, name: 'record')
+      redirect_to new_organization_tag_path(@organization, name: tag_name)
       return
     end
 
