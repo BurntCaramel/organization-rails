@@ -1,0 +1,10 @@
+<%= form_for :write_text, html: { class: 'new_written_tagged_text' } do |f| %>
+  <div class="field">
+    <%= f.label :content %>
+    <%= f.text_area :content %>
+  </div>
+
+  <div class="actions">
+    <%= f.submit "Add new ##{ tag.name }" %>
+  </div>
+<% end %>

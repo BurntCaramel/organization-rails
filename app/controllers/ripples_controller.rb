@@ -23,11 +23,16 @@ class RipplesController < ApplicationController
   def destroy
     @ripple = @channel.ripples.find params[:id]
     @successor = @ripple.succeed_with delete: true
-    @successor.save
+    if @successor.present?
+      @successor.save
+    else
+      redirect_to :back, alert: 'Already deleted'
+    end
   end
 
   def index
-    @ripples = @channel.ripples.by_key_64 params[:key_base64]
+    @ripples = @channel.ripples.all.by_key_64 params[:key_base64]
+    @new_ripple = @channel.ripples.build(info: {})
   end
 
   private

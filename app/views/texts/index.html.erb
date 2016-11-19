@@ -4,6 +4,7 @@
 
 <section class="nested">
 <%= render 'tags/item_form', item_tag_relationship: @new_item_relationship %>
+<%= render partial: 'write_form', locals: { tag: @tag } %>
 </section>
 
 <% if @item_relationships.nil? %>

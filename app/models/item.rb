@@ -1,12 +1,12 @@
 class Item
   include ActiveModel::Model
 
-  attr_accessor :organization_id, :tag_id, :sha256
+  attr_accessor :organization_id, :primary_tag_id, :sha256
 
   def self.from_tag_relationship(item_relationship)
     self.new(
       organization_id: item_relationship.tag.organization_id,
-      tag_id: item_relationship.tag_id,
+      primary_tag_id: item_relationship.tag_id,
       sha256: item_relationship.item_sha_256
     )
   end
@@ -15,8 +15,8 @@ class Item
     @organization ||= Organization.find(organization_id)
   end
 
-  def tag
-    @tag ||= Tag.find(tag_id)
+  def primary_tag
+    @primary_tag ||= Tag.find(primary_tag_id)
   end
 
   def tag_relationships
@@ -27,7 +27,7 @@ class Item
     ActiveModel::Name.new(
       self.class,
       nil,
-      tag.name
+      primary_tag.name
     )
   end
 
@@ -37,6 +37,10 @@ class Item
 
   def to_key
     [sha256]
+  end
+
+  def to_partial_path
+    "#{ActiveSupport::Inflector.pluralize(primary_tag.name)}/item"
   end
 end
 

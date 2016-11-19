@@ -19,6 +19,16 @@ class OrganizationS3Client
     get_item_data(sha256).string
   end
 
+  def upload_item(content)
+    sha256 = DigestConcern::calculate_sha256_for content
+    s3_client.put_object(
+      bucket: @bucket,
+      key: get_item_key(sha256),
+      body: content
+    )
+    sha256
+  end
+
   private
 
     def s3_client

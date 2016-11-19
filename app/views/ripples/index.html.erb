@@ -3,10 +3,16 @@
 <section>
 
 <header>
+<h2>
 <%= link_to "!#{ @channel.name }", [@organization, @channel] %>
+</h2>
 </header>
 
+<section class="nested">
+<%= render 'ripples/form', ripple: @new_ripple, successing: true %>
+</section>
+
 <div class="ripples">
-<%= render @ripples %>
+<%= render @ripples, show_content: true %>
 </div>
 </section>

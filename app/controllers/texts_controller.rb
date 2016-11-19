@@ -22,9 +22,13 @@ class TextsController < ApplicationController
   end
 
   def create
-    body = request.body
-    content = body.read
-    @new_item_relationship.item_sha_256 = upload_item body
+    #body = request.body
+    #content = body.read
+    content = params.require(:write_text).fetch(:content)
+    s3_client = @organization.s3_client
+    @new_item_relationship.item_sha_256 = s3_client.upload_item content
     @new_item_relationship.save
+
+    redirect_to texts_path
   end
 end

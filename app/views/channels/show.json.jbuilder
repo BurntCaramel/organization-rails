@@ -1,1 +1,1 @@
-json.items @ripples, partial: 'channels/ripple', as: :ripple
+json.items @ripples, partial: 'ripples/ripple', as: :ripple

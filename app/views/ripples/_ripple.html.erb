@@ -1,27 +1,40 @@
 <% can_remove = local_assigns.fetch :can_remove, true %>
+<% show_content = local_assigns.fetch :show_content, false %>
 <% tag_relationships = ripple.item_tag_relationships %>
 
 <figure class="ripple" id="<%= ripple.id %>" data-key-base64="<%= ripple.key_base64 %>">
 
 <figcaption>
 
-<% link_contents = capture do %>
-  <%= render 'ripples/dot', { ripple: ripple } %>
+<%= content_tag :h3 do %>
+  <%= link_to organization_channel_key_path(@organization, @channel, ripple.key_base64) do %>
+    <%= render 'ripples/dot', { ripple: ripple } %>
 
-  <% if ripple.deleted? %>
-  <h5>Removed <em><%= ripple.name %></em></h5>
-  <% else %>
-  <h3 class="ripple_name"><%= ripple.name %></h3>
+    <% if ripple.deleted? %>
+    Removed <em><%= ripple.name %></em>
+    <% else %>
+    <%= ripple.name %>
+    <% end %>
+
+    
+    <%= ripple.kind %>
   <% end %>
+
+  <small>
+  <%= render partial: 'shared/tag_relationships', object: tag_relationships if tag_relationships %>
+  </small>
 <% end %>
 
-<%= link_to link_contents, organization_channel_key_path(@organization, @channel, ripple.key_base64), class: 'ripple_key-link' %>
+<% unless ripple.deleted? or true %>
+<h5 class="ripple_hash">
+  <%= ripple.item_sha256 %>
+</h5>
+<% end %>
 
-<% unless ripple.deleted? %>
-<h5 class="ripple_hash"><%= ripple.item_sha256 %></h5>
-
-<%= render partial: 'shared/tag_relationships', object: tag_relationships if tag_relationships %>
-
+<% if show_content %>
+  <% ripple.item.try do |item| %>
+    <%= render item %>
+  <% end %>
 <% end %>
 
 </figcaption>

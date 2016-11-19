@@ -102,11 +102,11 @@ $nested-kind-opacity: 0.16;
 
   .field {
     flex-shrink: 1;
-    flex-grow: 1;
+    flex-grow: 2;
     margin: 0;
     margin-right: 1rem;
 
-    input {
+    input, textarea {
       width: 100%;
       font-size: 0.75rem;
     }

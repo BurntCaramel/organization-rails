@@ -1,1 +1,1 @@
-json ripple.info
+json.extract! ripple, :name, :media, :info, :created_at

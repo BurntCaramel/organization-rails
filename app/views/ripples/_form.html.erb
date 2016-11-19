@@ -1,3 +1,5 @@
+<% successing = local_assigns.fetch(:successing, false) %>
+
 <%= form_for([@organization, @channel, ripple]) do |f| %>
 
 <div class="field">
@@ -5,13 +7,20 @@
   <%= f.text_field :name %>
 </div>
 
+<% unless successing %>
 <div class="field">
-  <%= f.label :item_sha256, 'Item SHA256' %>
+  <%= f.label :kind, 'Kind' %>
+  <%= f.select :kind, Ripple::KINDS %>
+</div>
+<% end %>
+
+<div class="field">
+  <%= f.label :item_sha256, 'Item’s SHA256' %>
   <%= f.text_field :item_sha256 %>
 </div>
 
 <div class="actions">
-  <%= f.submit 'Post' %>
+  <%= f.submit successing ? 'Update' : 'Post' %>
 </div>
 
 <% end %>

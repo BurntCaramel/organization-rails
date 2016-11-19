@@ -1,7 +1,9 @@
-<figure class="nested">
-  <small><strong><%= link_to item.sha256, [item.organization, item] %></strong></small>
-  <pre><%= item.content_text %></pre>
-  <figcaption>
-  <%= render partial: 'shared/tag_relationships', object: item.tag_relationships %> 
-  </figcaption>
-</figure>
+<div class="nested">
+  <figure class="text-item">
+    <small><strong><%= link_to item.sha256, [item.organization, item] %></strong></small>
+    <pre class="text-item_preview"><%= item.content_text %></pre>
+    <figcaption>
+    <%= render partial: 'shared/tag_relationships', object: item.tag_relationships %> 
+    </figcaption>
+  </figure>
+</div>
