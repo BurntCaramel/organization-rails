@@ -44,6 +44,10 @@ main {
     @extend %content-holder;
   }
 
+  > section {
+    margin-bottom: 1rem;
+  }
+
   > nav {
     margin-bottom: 1rem;
 
@@ -126,13 +130,13 @@ article {
       @extend %button;
     }
   }
+}
 
-  .nested {
-    @extend %action-area;
-    @extend %action-area--tintable;
+.nested {
+  @extend %action-area;
+  @extend %action-area--tintable;
 
-    padding: 1rem;
-  }
+  padding: 1rem;
 }
 
 form {
@@ -141,6 +145,17 @@ form {
 
     font-size: 1rem;
     border: none;
+  }
+}
+
+label {
+  display: block;
+
+  // Checkbox
+  input + & {
+    display: inline-block;
+    padding-left: 0.333em;
+    padding-right: 1em;
   }
 }
 
@@ -230,8 +245,4 @@ header.primary {
   ul li {
     font-size: 12px;
   }
-}
-
-label {
-  display: block;
 }

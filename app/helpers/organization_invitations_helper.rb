@@ -1,0 +1,2 @@
+module OrganizationInvitationsHelper
+end

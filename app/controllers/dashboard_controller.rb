@@ -1,7 +1,7 @@
 class DashboardController < ApplicationController
   include ActionView::Helpers::UrlHelper
 
-  before_action :check_current_user
+  before_action :set_current_user
 
   def index
     @callback_url = "#{ root_url }auth/auth0/callback"

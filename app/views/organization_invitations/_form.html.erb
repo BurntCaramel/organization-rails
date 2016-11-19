@@ -1,0 +1,26 @@
+<%= form_for(organization_invitation) do |f| %>
+  <% if organization_invitation.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(organization_invitation.errors.count, "error") %> prohibited this organization_invitation from being saved:</h2>
+
+      <ul>
+      <% organization_invitation.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :email %>
+    <%= f.text_field :email %>
+  </div>
+
+  <div class="field">
+    <%= f.collection_check_boxes :capabilities, [:invite, :publish_content], :to_sym, -> (sym) { sym.to_s.humanize } %>
+  </div>
+
+  <div class="actions">
+    <%= f.submit 'Invite' %>
+  </div>
+<% end %>

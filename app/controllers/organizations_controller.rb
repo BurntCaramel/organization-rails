@@ -30,6 +30,11 @@ class OrganizationsController < ApplicationController
   # POST /organizations.json
   def create
     @organization.assign_attributes(organization_params)
+    @user_organization_capability = UserOrganizationCapability.new(
+      organization: @organization,
+      user: @current_user,
+      capabilities: :admin
+    )
 
     respond_to do |format|
       begin

@@ -1,0 +1,32 @@
+<%= render 'nav' %>
+
+<header>
+<h1>Invite to @<%= @organization.name %></h1>
+</header>
+
+<section class="nested">
+<%= render partial: 'form', locals: { organization_invitation: @new_organization_invitation } %>
+</section>
+
+<article>
+  <h2>Past Invitations</h2>
+  <table>
+    <thead>
+      <tr>
+        <th>Email</th>
+        <th>Capabilities</th>
+        <th></th>
+      </tr>
+    </thead>
+
+    <tbody>
+      <% @organization_invitations.each do |organization_invitation| %>
+        <tr>
+          <td><%= organization_invitation.email %></td>
+          <td><%= organization_invitation.capabilities.to_a.join(', ') %></td>
+          <td><%= link_to 'Destroy', organization_invitation_path(@organization, organization_invitation), method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+</article>

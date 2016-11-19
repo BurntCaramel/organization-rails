@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20161113123834) do
+ActiveRecord::Schema.define(version: 20161119054749) do
 
   create_table "channels", force: :cascade do |t|
     t.integer  "organization_id", null: false
@@ -29,6 +29,15 @@ ActiveRecord::Schema.define(version: 20161113123834) do
     t.index ["item_sha_256"], name: "by_item"
     t.index ["tag_id", "item_sha_256"], name: "by_tag_item", unique: true
     t.index ["tag_id"], name: "index_item_tag_relationships_on_tag_id"
+  end
+
+  create_table "organization_invitations", force: :cascade do |t|
+    t.integer  "organization_id"
+    t.string   "email"
+    t.string   "capabilities"
+    t.datetime "created_at",      null: false
+    t.datetime "updated_at",      null: false
+    t.index ["organization_id"], name: "index_organization_invitations_on_organization_id"
   end
 
   create_table "organizations", force: :cascade do |t|
@@ -78,6 +87,7 @@ ActiveRecord::Schema.define(version: 20161113123834) do
     t.datetime "created_at",      null: false
     t.datetime "updated_at",      null: false
     t.index ["organization_id"], name: "index_user_organization_capabilities_on_organization_id"
+    t.index [nil, "user_identifier"], name: "index_organization_user_identifier"
   end
 
 end

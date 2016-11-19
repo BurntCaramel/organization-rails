@@ -13,6 +13,8 @@ Rails.application.routes.draw do
   end
 
   resources :organizations do
+    resources :invitations, controller: :organization_invitations
+
     resources :channels do
       resources :ripples, only: [:create, :destroy] do
         collection do
