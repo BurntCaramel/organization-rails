@@ -8,7 +8,8 @@ html {
 	font-size: 16px;
 	font-size: calc(100% + 2 * (100vw - 600px) / 400);
 	background-color: $background-color;
-  color: #fafafa;
+  //color: #ff3d76;
+  color: #2f2525;
 }
 
 body {
@@ -27,6 +28,10 @@ a {
 
 button {
   @extend %button;
+}
+
+blockquote {
+  font-style: italic;
 }
 
 small {

@@ -1,9 +1,9 @@
-$background-color: #111; // #211;
+$background-color: #fef8fc; // #211;
 
-$link-color: #f82484;
-$link-color--hover: #eee;
+$link-color: #ff3d76;
+$link-color--hover: #ff3d76;
 
-$section-color: #666;
+$section-color: #fff;
 
 $kind-text-color:rgb(247, 203, 71);
 $kind-image-color: rgb(15, 177, 231);
@@ -26,6 +26,10 @@ $nested-kind-opacity: 0.16;
     color: $link-color--hover;
   }
 }
+%link--primary {
+  display: block;
+  width: 100%;
+}
 %link--normal {
   text-decoration: none;
 }
@@ -46,7 +50,7 @@ $nested-kind-opacity: 0.16;
 
 %action-area {
   padding: 0.333em 0.444em;
-  background-color: rgba($section-color, 0.075);
+  //background-color: rgba($section-color, 0.9);
 }
 %action-area--active {
   background-color: rgba($link-color, 0.075);

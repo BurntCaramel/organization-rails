@@ -11,15 +11,18 @@ class ServiceCredential < ApplicationRecord
 
   S3_ACCESS_SERVICE_ID = 'aws.s3.access'
   IMGIX_SERVICE_ID = 'imgix'
+  TRELLO_SERVICE_ID = 'trello'
 
   KINDS = [
     S3_ACCESS_SERVICE_ID,
-    IMGIX_SERVICE_ID
+    IMGIX_SERVICE_ID,
+    TRELLO_SERVICE_ID
   ]
 
   KIND_TO_INFO_KEYS = {
     S3_ACCESS_SERVICE_ID => ['accessKeyID', 'secretAccessKey', 'region'],
-    IMGIX_SERVICE_ID => ['host']
+    IMGIX_SERVICE_ID => ['host'],
+    TRELLO_SERVICE_ID => ['token']
   }
 
   scope :kind, -> (kind) { where(kind: kind) }
@@ -29,10 +32,14 @@ class ServiceCredential < ApplicationRecord
   def self.imgix
     self.kind(IMGIX_SERVICE_ID).first
   end
+  def self.trello
+    self.kind(TRELLO_SERVICE_ID).first
+  end
 
   KIND_TO_TITLES = {
     S3_ACCESS_SERVICE_ID => 'S3',
-    IMGIX_SERVICE_ID => 'imgix'
+    IMGIX_SERVICE_ID => 'imgix',
+    TRELLO_SERVICE_ID => 'Trello'
   }
 
   def self.title_for_kind(kind)

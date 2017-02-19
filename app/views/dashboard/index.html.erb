@@ -1,15 +1,9 @@
 <article>
 
 <section class="nested">
-<% if @current_user.nil? %>
-<%= render 'log-in-passwordless' %>
-<% else %>
-<h2><%= link_to 'Organizations', organizations_path %></h2>
-<% end %>
-</section>
-
-<section class="nested">
 <%= simple_format @intro %>
+
+<%= link_to 'Create a story', :organizations %>
 </section>
 
 <section class="nested">

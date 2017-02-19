@@ -10,6 +10,30 @@ class ServiceCredentialsController < ApplicationController
   end
 
   def edit
+    @id = params[:id]
+    @scripts_urls = []
+    @scripts_inline = []
+
+    if @id === "trello"
+      @scripts_urls << "https://trello.com/1/client.js?key=#{ ENV.fetch('TRELLO_KEY') }"
+      @scripts_inline << "
+$('#service_credential_info_token').val('dfgdfgd');
+Trello.authorize({
+  type: 'popup',
+  name: 'Royal Icing',
+  scope: {
+    read: 'true',
+    write: 'true' },
+  expiration: 'never',
+  success: function() {
+    $('#service_credential_info_token').val(Trello.token());
+    console.log(Trello.token())
+  },
+  error: function() {
+
+  }
+});"
+    end
   end
 
   def show

@@ -1,9 +1,19 @@
 <header class="primary">
 
 <nav>
-<h5><%= link_to 'Organizations', organizations_path %></h5>
-/
 <h6>Royal Icing</h6>
+
+<% if @current_user.nil? %>
+<div>
+<%= render 'log-in-passwordless' %>
+</div>
+<% else %>
+<h5><%= link_to 'Groups', organizations_path %></h5>
+<% end %>
+
+<h5><%= link_to 'Guides', organizations_path %></h5>
+<h5><%= link_to 'Showcases', organizations_path %></h5>
+
 </nav>
 
 </header>

@@ -1,5 +1,13 @@
 <%= render 'nav' %>
 
+<% @scripts_urls.each do |url| %>
+  <%= javascript_include_tag url %>
+<% end %>
+
+<% @scripts_inline.each do |content| %>
+  <%= javascript_tag content %>
+<% end %>
+
 <article>
 
 <header>
